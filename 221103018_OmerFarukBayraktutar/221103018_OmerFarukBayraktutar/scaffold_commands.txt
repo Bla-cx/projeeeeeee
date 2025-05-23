@@ -1,0 +1,8 @@
+# Install tools
+dotnet tool install --global dotnet-ef
+
+# Scaffold komutu
+dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=etkinliklerydb;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -o Models/Scaffolded -c EtkinliklerIntDbContext -f --no-onconfiguring
+
+# Veya PowerShell ile
+# Scaffold-DbContext "Server=(localdb)\mssqllocaldb;Database=etkinliklerydb;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models/Scaffolded -ContextDir DAL -Context EtkinliklerIntDbContext -Force

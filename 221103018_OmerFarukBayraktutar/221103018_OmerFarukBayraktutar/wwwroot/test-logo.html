@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logo Test</title>
+    <style>
+        .logo-container {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        .logo {
+            height: 40px;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Logo Test</h1>
+    
+    <div class="logo-container">
+        <h3>With relative path ~/img/</h3>
+        <img src="img/biletini-ayir-logo.png" class="logo" alt="Logo Test 1">
+    </div>
+    
+    <div class="logo-container">
+        <h3>With absolute path /img/</h3>
+        <img src="/img/biletini-ayir-logo.png" class="logo" alt="Logo Test 2">
+    </div>
+    
+    <div class="logo-container">
+        <h3>With full path</h3>
+        <img src="http://localhost:5071/img/biletini-ayir-logo.png" class="logo" alt="Logo Test 3">
+    </div>
+    
+    <div class="logo-container">
+        <h3>With favicon (for comparison)</h3>
+        <img src="/img/favicon.svg" class="logo" alt="Favicon">
+    </div>
+    
+    <script>
+        // Add load/error handlers
+        document.querySelectorAll('img').forEach(function(img) {
+            img.onload = function() {
+                console.log('Image loaded successfully:', this.src);
+                this.style.border = '2px solid green';
+                const status = document.createElement('span');
+                status.textContent = ' ✓ Loaded';
+                status.style.color = 'green';
+                this.after(status);
+            };
+            img.onerror = function() {
+                console.error('Image failed to load:', this.src);
+                this.style.border = '2px solid red';
+                const status = document.createElement('span');
+                status.textContent = ' ✗ Failed';
+                status.style.color = 'red';
+                this.after(status);
+            };
+        });
+    </script>
+</body>
+</html> 

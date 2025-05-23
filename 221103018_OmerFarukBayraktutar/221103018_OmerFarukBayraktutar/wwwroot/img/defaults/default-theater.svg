@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <rect width="800" height="500" fill="#1a0f0d"/>
+  
+  <!-- Theater walls -->
+  <path d="M100,50 L700,50 L650,450 L150,450 Z" fill="#3e2723"/>
+  
+  <!-- Stage -->
+  <rect x="200" y="50" width="400" height="100" fill="#4e342e"/>
+  <rect x="220" y="70" width="360" height="60" fill="#6d4c41"/>
+
+  <!-- Stage curtains -->
+  <path d="M200,50 Q300,100 200,150" fill="#b71c1c" stroke="#7f0000" stroke-width="3"/>
+  <path d="M600,50 Q500,100 600,150" fill="#b71c1c" stroke="#7f0000" stroke-width="3"/>
+  
+  <!-- Seating rows -->
+  <path d="M150,200 L650,200 L640,240 L160,240 Z" fill="#4e342e"/>
+  <path d="M160,250 L640,250 L630,290 L170,290 Z" fill="#4e342e"/>
+  <path d="M170,300 L630,300 L620,340 L180,340 Z" fill="#4e342e"/>
+  <path d="M180,350 L620,350 L610,390 L190,390 Z" fill="#4e342e"/>
+  <path d="M190,400 L610,400 L600,440 L200,440 Z" fill="#4e342e"/>
+  
+  <!-- Individual seats suggestion -->
+  <path d="M200,210 Q210,220 220,210 L220,230 Q210,240 200,230 Z" fill="#3e2723"/>
+  <path d="M230,210 Q240,220 250,210 L250,230 Q240,240 230,230 Z" fill="#3e2723"/>
+  <path d="M260,210 Q270,220 280,210 L280,230 Q270,240 260,230 Z" fill="#3e2723"/>
+</svg> 

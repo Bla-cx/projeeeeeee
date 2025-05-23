@@ -1,0 +1,181 @@
+@model List<_221103018_OmerFarukBayraktutar.DAL.Models.Rezervasyon>
+@{
+    ViewData["Title"] = "Rezervasyonlar";
+    Layout = "_OrganizatorLayout";
+}
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col">
+            <h2><i class="fas fa-ticket-alt me-2"></i>Rezervasyonlar</h2>
+            <p class="text-muted">Tüm etkinliklerinize ait rezervasyon kayıtları</p>
+        </div>
+        <div class="col-auto">
+            <a class="btn btn-primary" href="/Organizator/Rezervasyon/BiletKontrol">
+                <i class="fas fa-qrcode me-2"></i>Bilet Kontrol
+            </a>
+        </div>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle me-2"></i> @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-circle me-2"></i> @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover datatable">
+                    <thead>
+                        <tr>
+                            <th>Rezervasyon No</th>
+                            <th>Etkinlik</th>
+                            <th>Müşteri</th>
+                            <th>Tarih</th>
+                            <th>Bilet Sayısı</th>
+                            <th>Tutar</th>
+                            <th>Durum</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var item in Model)
+                            {
+                                string durumClass = "badge bg-success";
+                                string durumText = "Aktif";
+                                
+                                if (item.Iptal)
+                                {
+                                    durumClass = "badge bg-danger";
+                                    durumText = "İptal Edildi";
+                                }
+                                else if (item.Kullanildi)
+                                {
+                                    durumClass = "badge bg-secondary";
+                                    durumText = "Kullanıldı";
+                                }
+                                
+                                <tr>
+                                    <td>@item.RezervasyonId</td>
+                                    <td>@item.Etkinlik?.EtkinlikAdi</td>
+                                    <td>@(item.Kullanici?.Ad + " " + item.Kullanici?.Soyad)</td>
+                                    <td>@item.RezervasyonTarihi.ToString("dd/MM/yyyy HH:mm")</td>
+                                    <td>@item.BiletSayisi</td>
+                                    <td>@item.ToplamTutar.ToString("C")</td>
+                                    <td>
+                                        <span class="@durumClass">@durumText</span>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
+                                            <a class="btn btn-info" href="/Organizator/Rezervasyon/Detay/@item.RezervasyonId">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            @if (!item.Iptal && !item.Kullanildi)
+                                            {
+                                                <button type="button" class="btn btn-success" onclick="kullanildiOnay(@item.RezervasyonId)">
+                                                    <i class="fas fa-check"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-danger" onclick="iptalOnay(@item.RezervasyonId)">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                            }
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="8" class="text-center">Rezervasyon bulunamadı</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Kullanıldı İşaretleme Modal -->
+<div class="modal fade" id="kullanildiModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Bilet Kullanıldı Onayı</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Bu bileti kullanılmış olarak işaretlemek istediğinize emin misiniz?</p>
+                <p class="text-muted"><small>Bu işlem geri alınamaz.</small></p>
+            </div>
+            <div class="modal-footer">
+                <form id="kullanildiForm" action="/Organizator/Rezervasyon/Kullanildi" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" id="kullanildiId" name="id" value="" />
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                    <button type="submit" class="btn btn-success">Kullanıldı İşaretle</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- İptal Onay Modal -->
+<div class="modal fade" id="iptalModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Bilet İptal Onayı</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Bu bileti iptal etmek istediğinize emin misiniz?</p>
+                <p class="text-danger"><small>Bu işlem geri alınamaz ve etkinlik kapasitesi tekrar kullanıma açılır.</small></p>
+            </div>
+            <div class="modal-footer">
+                <form id="iptalForm" action="/Organizator/Rezervasyon/Iptal" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" id="iptalId" name="id" value="" />
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Vazgeç</button>
+                    <button type="submit" class="btn btn-danger">İptal Et</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Kullanıcı etkileşimi için gerekli fonksiyonlar
+        function kullanildiOnay(id) {
+            document.getElementById('kullanildiId').value = id;
+            var myModal = new bootstrap.Modal(document.getElementById('kullanildiModal'));
+            myModal.show();
+        }
+        
+        function iptalOnay(id) {
+            document.getElementById('iptalId').value = id;
+            var myModal = new bootstrap.Modal(document.getElementById('iptalModal'));
+            myModal.show();
+        }
+
+        // Sayfa yüklendiğinde tabloyu özelleştir
+        $(document).ready(function() {
+            $(document).trigger('reinitialize-datatables', ['table.datatable']);
+        });
+    </script>
+} 

@@ -1,0 +1,190 @@
+@model _221103018_OmerFarukBayraktutar.ViewModels.EtkinlikEkleViewModel
+@{
+    ViewData["Title"] = "Yeni Etkinlik Ekle";
+    Layout = "_AdminLayout";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <h2>Yeni Etkinlik Ekle</h2>
+            <p>Yeni bir etkinlik oluşturmak için aşağıdaki formu doldurun.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-light">
+                    <h5 class="card-title mb-0">Etkinlik Bilgileri</h5>
+                </div>
+                <div class="card-body">
+                    <form action="/Admin/Etkinlik/Ekle" method="post" enctype="multipart/form-data">
+                        @Html.AntiForgeryToken()
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label class="control-label">Etkinlik Adı</label>
+                                    <input name="EtkinlikAdi" class="form-control" required />
+                                    <span asp-validation-for="EtkinlikAdi" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label class="control-label">Tarih</label>
+                                    <input name="Tarih" class="form-control" type="date" required />
+                                    <span asp-validation-for="Tarih" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label class="control-label">Başlangıç Saati</label>
+                                    <input name="BaslangicSaati" class="form-control" type="time" required />
+                                    <span asp-validation-for="BaslangicSaati" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label class="control-label">Bitiş Saati</label>
+                                    <input name="BitisSaati" class="form-control" type="time" required />
+                                    <span asp-validation-for="BitisSaati" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label class="control-label">Organizatör</label>
+                                    <select name="OrganizatorId" class="form-select" required>
+                                        <option value="">-- Organizatör Seçin --</option>
+                                        @foreach (var org in Model.OrganizatorList)
+                                        {
+                                            <option value="@org.Value">@org.Text</option>
+                                        }
+                                    </select>
+                                    <span asp-validation-for="OrganizatorId" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label class="control-label">Kategori</label>
+                                    <select name="KategoriId" class="form-select" required>
+                                        <option value="">-- Kategori Seçin --</option>
+                                        @foreach (var kategori in Model.Kategoriler)
+                                        {
+                                            <option value="@kategori.Value">@kategori.Text</option>
+                                        }
+                                    </select>
+                                    <span asp-validation-for="KategoriId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label class="control-label">Şehir</label>
+                                    <select name="SehirId" class="form-select" required>
+                                        <option value="">-- Şehir Seçin --</option>
+                                        @foreach (var sehir in Model.Sehirler)
+                                        {
+                                            <option value="@sehir.Value">@sehir.Text</option>
+                                        }
+                                    </select>
+                                    <span asp-validation-for="SehirId" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="control-label">Adres</label>
+                            <input name="Adres" class="form-control" required />
+                            <span asp-validation-for="Adres" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="control-label">Açıklama</label>
+                            <textarea name="Aciklama" class="form-control" rows="4" required></textarea>
+                            <span asp-validation-for="Aciklama" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label class="control-label">Bilet Fiyatı</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">₺</span>
+                                        <input name="BiletFiyati" class="form-control" type="number" step="0.01" min="0" required />
+                                    </div>
+                                    <span asp-validation-for="BiletFiyati" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label class="control-label">Kapasite</label>
+                                    <input name="Kapasite" class="form-control" type="number" min="1" required />
+                                    <span asp-validation-for="Kapasite" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="control-label">Resim</label>
+                            <input name="Resim" class="form-control" type="file" accept="image/*" />
+                            <span asp-validation-for="Resim" class="text-danger"></span>
+                            <small class="form-text text-muted">Etkinlik için bir afiş veya tanıtım görseli yükleyin.</small>
+                        </div>
+
+                        <div class="form-check mb-3">
+                            <input name="AktifMi" class="form-check-input" type="checkbox" value="true" checked />
+                            <label class="form-check-label">Aktif Mi</label>
+                            <span asp-validation-for="AktifMi" class="text-danger"></span>
+                            <small class="form-text text-muted">İşaretlenirse etkinlik ana sayfada görünür olacaktır.</small>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Kaydet
+                            </button>
+                            <a href="/Admin/Etkinlik" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i> Listeye Dön
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Form validasyonları
+            $('form').on('submit', function(e) {
+                const etkinlikAdi = $('input[name="EtkinlikAdi"]').val();
+                const tarih = $('input[name="Tarih"]').val();
+                const baslangicSaati = $('input[name="BaslangicSaati"]').val();
+                const bitisSaati = $('input[name="BitisSaati"]').val();
+                const organizatorId = $('select[name="OrganizatorId"]').val();
+                const kategoriId = $('select[name="KategoriId"]').val();
+                const sehirId = $('select[name="SehirId"]').val();
+                
+                if (!etkinlikAdi || !tarih || !baslangicSaati || !bitisSaati || 
+                    !organizatorId || !kategoriId || !sehirId) {
+                    alert('Lütfen tüm zorunlu alanları doldurun.');
+                    e.preventDefault();
+                    return false;
+                }
+                
+                return true;
+            });
+        });
+    </script>
+} 

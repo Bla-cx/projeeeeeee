@@ -1,0 +1,65 @@
+@model List<_221103018_OmerFarukBayraktutar.DAL.Models.Etkinlik>
+@{
+    ViewData["Title"] = "Ana Sayfa - Biletini Ayır";
+}
+
+<div class="alert alert-warning mt-4">
+    <strong>Dikkat!</strong> Sistem şu anda bakım modunda çalışıyor. Bazı özellikler geçici olarak kullanılamayabilir.
+</div>
+
+<!-- Ana Slider -->
+<div id="mainCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="hero-slide" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/img/defaults/default-slider-concert.svg') center/cover no-repeat;">
+                <div class="container position-relative py-5 text-white text-center" style="min-height: 500px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <h1 class="display-3 fw-bold mb-4 slide-title">Müziğin Ritmiyle Buluşun</h1>
+                    <p class="lead mb-4 slide-text">Konserler, festivaller ve daha fazlası için biletlerinizi hemen alın!</p>
+                    <a href="#" class="btn btn-primary btn-lg px-4 py-2 rounded-pill">Konser Biletleri</a>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="hero-slide" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/img/defaults/default-slider-theater.svg') center/cover no-repeat;">
+                <div class="container position-relative py-5 text-white text-center" style="min-height: 500px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <h1 class="display-3 fw-bold mb-4 slide-title">Sanatın Büyüsünü Yaşayın</h1>
+                    <p class="lead mb-4 slide-text">Tiyatro, sergi ve sanat etkinlikleri için yerinizi ayırtın!</p>
+                    <a href="#" class="btn btn-primary btn-lg px-4 py-2 rounded-pill">Tiyatro Biletleri</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Önceki</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Sonraki</span>
+    </button>
+</div>
+
+<!-- Call to Action -->
+<div class="cta-section py-5 text-center text-white" style="background: linear-gradient(rgba(13, 110, 253, 0.9), rgba(11, 94, 215, 0.9)), url('/img/defaults/default-cta-bg.svg') center/cover no-repeat fixed;">
+    <div class="container py-5">
+        <h2 class="display-4 fw-bold mb-4">Bakım Çalışması</h2>
+        <p class="lead mb-4">Sistemimiz şu anda bakım çalışması nedeniyle sınırlı özelliklerle hizmet vermektedir. 
+        Çalışmalarımızın en kısa sürede tamamlanması için ekiplerimiz çalışmaktadır.</p>
+        <div>
+            <a href="/debug-startup" class="btn btn-light btn-lg rounded-pill px-5 py-2 text-primary">Sistem Durumu</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            console.log("Sayfa yüklendi!");
+        });
+    </script>
+} 

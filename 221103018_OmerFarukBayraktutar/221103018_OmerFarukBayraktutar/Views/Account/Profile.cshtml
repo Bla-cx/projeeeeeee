@@ -1,0 +1,309 @@
+@model ProfileViewModel
+@using _221103018_OmerFarukBayraktutar.Models.Identity
+
+@{
+    ViewData["Title"] = "Profilim - Biletini Ayır";
+}
+
+@section Head {
+    <style>
+        /* Modal stillemesi */
+        .modal-content {
+            border-radius: 10px;
+        }
+    </style>
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Sol Sidebar -->
+        <div class="col-md-3">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body text-center">
+                    <img src="@(Model.GetSafeProfileImagePath())" 
+                         alt="Profil Resmi" 
+                         class="rounded-circle mb-3" 
+                         style="width: 150px; height: 150px; object-fit: cover;">
+                    <h5 class="mb-0">@Model.Ad @Model.Soyad</h5>
+                    <p class="text-muted">@Model.Email</p>
+                </div>
+            </div>
+
+            <div class="list-group shadow-sm">
+                <a href="#profile-info" class="list-group-item list-group-item-action @(ViewBag.ActiveTab == "profile-info" ? "active" : "")" data-bs-toggle="list">
+                    <i class="bi bi-person-circle me-2"></i> Profil Bilgileri
+                </a>
+                <a href="#reservations" class="list-group-item list-group-item-action @(ViewBag.ActiveTab == "reservations" ? "active" : "")" data-bs-toggle="list">
+                    <i class="bi bi-ticket-perforated me-2"></i> Biletlerim
+                </a>
+                <a href="#password" class="list-group-item list-group-item-action @(ViewBag.ActiveTab == "password" ? "active" : "")" data-bs-toggle="list">
+                    <i class="bi bi-key me-2"></i> Şifre Değiştir
+                </a>
+            </div>
+        </div>
+
+        <!-- Sağ İçerik -->
+        <div class="col-md-9">
+            <div class="tab-content">
+                <!-- Profil Bilgileri -->
+                <div class="tab-pane fade @(ViewBag.ActiveTab == "profile-info" ? "show active" : "")" id="profile-info">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h3 class="mb-4">Profil Bilgileri</h3>
+                            
+                            @if (!string.IsNullOrEmpty(TempData["SuccessMessage"]?.ToString()))
+                            {
+                                <div class="alert alert-success">
+                                    @TempData["SuccessMessage"]
+                                </div>
+                            }
+
+                            <form asp-action="UpdateProfile" method="post" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label asp-for="Ad" class="form-label"></label>
+                                        <input asp-for="Ad" class="form-control" />
+                                        <span asp-validation-for="Ad" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label asp-for="Soyad" class="form-label"></label>
+                                        <input asp-for="Soyad" class="form-control" />
+                                        <span asp-validation-for="Soyad" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="Email" class="form-label"></label>
+                                    <input asp-for="Email" class="form-control" readonly />
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="PhoneNumber" class="form-label"></label>
+                                    <input asp-for="PhoneNumber" class="form-control" />
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="NewProfileImage" class="form-label">Profil Resmi</label>
+                                    <input asp-for="NewProfileImage" class="form-control" type="file" accept="image/*" />
+                                    <span asp-validation-for="NewProfileImage" class="text-danger"></span>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Bilgileri Güncelle</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Biletlerim -->
+                <div class="tab-pane fade @(ViewBag.ActiveTab == "reservations" ? "show active" : "")" id="reservations">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h3 class="mb-4">Biletlerim</h3>
+                            
+                            @if (Model.Rezervasyonlar != null && Model.Rezervasyonlar.Any())
+                            {
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Etkinlik</th>
+                                                <th>Tarih</th>
+                                                <th>Bilet Sayısı</th>
+                                                <th>Durum</th>
+                                                <th>İşlemler</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var rezervasyon in Model.Rezervasyonlar)
+                                            {
+                                                <tr>
+                                                    <td>@rezervasyon.Etkinlik?.EtkinlikAdi</td>
+                                                    <td>@rezervasyon.Etkinlik?.Tarih.ToString("dd.MM.yyyy HH:mm")</td>
+                                                    <td>@rezervasyon.BiletSayisi</td>
+                                                    <td>
+                                                        @if (rezervasyon.Iptal)
+                                                        {
+                                                            <span class="badge bg-danger">İptal Edildi</span>
+                                                        }
+                                                        else if (rezervasyon.Kullanildi)
+                                                        {
+                                                            <span class="badge bg-secondary">Kullanıldı</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="badge bg-success">Onaylandı</span>
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        <a href="@Url.Action("Detay", "Rezervasyon", new { id = rezervasyon.RezervasyonId })" class="btn btn-sm btn-outline-info me-1">
+                                                            <i class="bi bi-info-circle"></i>
+                                                        </a>
+                                                        @if (!rezervasyon.Iptal && !rezervasyon.Kullanildi && rezervasyon.Etkinlik?.Tarih > DateTime.Now.AddDays(1))
+                                                        {
+                                                            <button type="button" class="btn btn-sm btn-outline-danger" 
+                                                                   onclick="showIptalModal(@rezervasyon.RezervasyonId)">
+                                                                <i class="bi bi-x-circle"></i> İptal Et
+                                                            </button>
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="text-center py-4">
+                                    <i class="bi bi-ticket-detailed" style="font-size: 3rem;"></i>
+                                    <p class="mt-3">Henüz bilet rezervasyonunuz bulunmamaktadır.</p>
+                                    <a asp-controller="Etkinlik" asp-action="Listele" class="btn btn-primary mt-2">
+                                        Etkinliklere Göz At
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Şifre Değiştir -->
+                <div class="tab-pane fade @(ViewBag.ActiveTab == "password" ? "show active" : "")" id="password">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h3 class="mb-4">Şifre Değiştir</h3>
+                            
+                            @if (!string.IsNullOrEmpty(TempData["SuccessMessage"]?.ToString()))
+                            {
+                                <div class="alert alert-success">
+                                    @TempData["SuccessMessage"]
+                                </div>
+                            }
+                            
+                            @if (!string.IsNullOrEmpty(TempData["ErrorMessage"]?.ToString()))
+                            {
+                                <div class="alert alert-danger">
+                                    @TempData["ErrorMessage"]
+                                </div>
+                            }
+                            
+                            <form asp-action="ChangePassword" method="post">
+                                <div class="mb-3">
+                                    <label for="currentPassword" class="form-label">Mevcut Şifre</label>
+                                    <input type="password" class="form-control" id="currentPassword" name="currentPassword" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="newPassword" class="form-label">Yeni Şifre</label>
+                                    <input type="password" class="form-control" id="newPassword" name="newPassword" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">Yeni Şifre (Tekrar)</label>
+                                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Şifreyi Değiştir</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bilet İptal Modal (Standart) -->
+<div class="modal fade" id="iptalModal" tabindex="-1" aria-labelledby="iptalModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="iptalModalLabel">Bilet İptal Onayı</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Bu bileti iptal etmek istediğinize emin misiniz?</p>
+                <p class="text-danger">Dikkat: İptal edilen biletler için ödeme iadeleri hesabınıza 7 iş günü içinde yapılacaktır.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Vazgeç</button>
+                <button type="button" class="btn btn-danger" id="confirmIptalBtn">Bileti İptal Et</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Antiforgery token -->
+@Html.AntiForgeryToken()
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        // Tab'ları etkinleştir
+        var triggerTabList = [].slice.call(document.querySelectorAll('.list-group-item'))
+        triggerTabList.forEach(function (triggerEl) {
+            var tabTrigger = new bootstrap.Tab(triggerEl)
+            triggerEl.addEventListener('click', function (event) {
+                event.preventDefault()
+                triggerEl.classList.add('active');
+                tabTrigger.show()
+            })
+        });
+
+        // URL'de hash varsa ilgili tab'ı aç
+        if (window.location.hash) {
+            const hash = window.location.hash;
+            const tab = document.querySelector(`a[href="${hash}"]`);
+            if (tab) {
+                tab.click();
+            }
+        }
+        
+        // İptal modalı için değişkenler
+        let currentRezervasyonId = 0;
+        const modal = new bootstrap.Modal(document.getElementById('iptalModal'));
+        
+        // İptal modalını göster
+        function showIptalModal(rezervasyonId) {
+            console.log('showIptalModal called with ID:', rezervasyonId);
+            currentRezervasyonId = rezervasyonId;
+            modal.show();
+        }
+        
+        // İptal onay butonu click olayı
+        document.getElementById('confirmIptalBtn').addEventListener('click', function() {
+            console.log('Bilet iptal ediliyor, ID:', currentRezervasyonId);
+            
+            // CSRF token'ı al
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+            console.log('CSRF Token:', token);
+            
+            // AJAX ile POST isteği gönder
+            fetch('/Rezervasyon/IptalEt', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'RequestVerificationToken': token
+                },
+                body: 'rezervasyonId=' + currentRezervasyonId + '&__RequestVerificationToken=' + token
+            })
+            .then(response => {
+                console.log('Response status:', response.status);
+                if (response.ok) {
+                    // Modal'ı kapat
+                    modal.hide();
+                    
+                    // Sayfayı yenile
+                    window.location.href = '/Account/Profile?tab=reservations&success=true';
+                } else {
+                    alert('Bilet iptal edilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Bilet iptal edilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.');
+            });
+        });
+    </script>
+}

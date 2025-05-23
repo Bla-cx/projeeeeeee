@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#1565C0" />
+  <text x="200" y="150" font-family="Arial" font-size="24" fill="white" text-anchor="middle" dominant-baseline="middle">Konser Görseli</text>
+  <g transform="translate(200, 100)">
+    <path d="M-30,0 C-30,16.5685 -16.5685,30 0,30 C16.5685,30 30,16.5685 30,0 C30,-16.5685 16.5685,-30 0,-30 C-16.5685,-30 -30,-16.5685 -30,0 Z" fill="none" stroke="white" stroke-width="2" />
+    <path d="M-20,-10 L20,-10 L20,10 L-20,10 Z" fill="white" />
+    <path d="M-5,-20 L-5,20" stroke="white" stroke-width="4" stroke-linecap="round" />
+    <path d="M5,-20 L5,20" stroke="white" stroke-width="4" stroke-linecap="round" />
+  </g>
+</svg> 

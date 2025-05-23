@@ -1,0 +1,162 @@
+@model _221103018_OmerFarukBayraktutar.ViewModels.EtkinlikDuzenleViewModel
+@{
+    ViewData["Title"] = "Etkinlik Düzenle";
+    Layout = "_OrganizatorLayout";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <h2>Etkinlik Düzenle</h2>
+            <p>Etkinlik bilgilerini güncelleyebilirsiniz.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-light">
+                    <h5 class="card-title mb-0">Etkinlik Bilgileri</h5>
+                </div>
+                <div class="card-body">
+                    <form action="/Organizator/Etkinlik/Duzenle" method="post" enctype="multipart/form-data">
+                        @Html.AntiForgeryToken()
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" name="EtkinlikId" value="@Model.EtkinlikId" />
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label class="control-label">Etkinlik Adı</label>
+                                    <input name="EtkinlikAdi" class="form-control" value="@Model.EtkinlikAdi" />
+                                    <span asp-validation-for="EtkinlikAdi" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label class="control-label">Tarih</label>
+                                    <input name="Tarih" class="form-control" type="date" value="@Model.Tarih.ToString("yyyy-MM-dd")" />
+                                    <span asp-validation-for="Tarih" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label class="control-label">Başlangıç Saati</label>
+                                    <input name="BaslangicSaati" class="form-control" type="time" value="@Model.BaslangicSaati?.ToString("hh\\:mm")" />
+                                    <span asp-validation-for="BaslangicSaati" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label class="control-label">Bitiş Saati</label>
+                                    <input name="BitisSaati" class="form-control" type="time" value="@Model.BitisSaati?.ToString("hh\\:mm")" />
+                                    <span asp-validation-for="BitisSaati" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label class="control-label">Kategori</label>
+                                    <select name="KategoriId" class="form-select">
+                                        <option value="">-- Kategori Seçin --</option>
+                                        @foreach (var kategori in Model.Kategoriler)
+                                        {
+                                            <option value="@kategori.Value" @(Model.KategoriId.ToString() == kategori.Value ? "selected" : "")>@kategori.Text</option>
+                                        }
+                                    </select>
+                                    <span asp-validation-for="KategoriId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label class="control-label">Şehir</label>
+                                    <select name="SehirId" class="form-select">
+                                        <option value="">-- Şehir Seçin --</option>
+                                        @foreach (var sehir in Model.Sehirler)
+                                        {
+                                            <option value="@sehir.Value" @(Model.SehirId.ToString() == sehir.Value ? "selected" : "")>@sehir.Text</option>
+                                        }
+                                    </select>
+                                    <span asp-validation-for="SehirId" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="control-label">Adres</label>
+                            <input name="Adres" class="form-control" value="@Model.Adres" />
+                            <span asp-validation-for="Adres" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="control-label">Açıklama</label>
+                            <textarea name="Aciklama" class="form-control" rows="4">@Model.Aciklama</textarea>
+                            <span asp-validation-for="Aciklama" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label class="control-label">Bilet Fiyatı</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">₺</span>
+                                        <input name="BiletFiyati" class="form-control" type="number" step="0.01" min="0" value="@Model.BiletFiyati" />
+                                    </div>
+                                    <span asp-validation-for="BiletFiyati" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label class="control-label">Kapasite</label>
+                                    <input name="Kapasite" class="form-control" type="number" min="1" value="@Model.Kapasite" />
+                                    <span asp-validation-for="Kapasite" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="control-label">Resim</label>
+                            <input name="Resim" class="form-control" type="file" accept="image/*" />
+                            <span asp-validation-for="Resim" class="text-danger"></span>
+                            <small class="form-text text-muted">Etkinlik için bir afiş veya tanıtım görseli yükleyin (değiştirmek istemiyorsanız boş bırakın).</small>
+                            
+                            @if (!string.IsNullOrEmpty(Model.MevcutResimYolu))
+                            {
+                                <div class="mt-2">
+                                    <label>Mevcut Resim:</label>
+                                    <img src="@Model.MevcutResimYolu" class="img-thumbnail" style="max-height: 150px" />
+                                    <input type="hidden" name="MevcutResimYolu" value="@Model.MevcutResimYolu" />
+                                </div>
+                            }
+                        </div>
+
+                        <div class="form-check mb-3">
+                            <input name="AktifMi" class="form-check-input" type="checkbox" value="true" @(Model.AktifMi ? "checked" : "") />
+                            <label class="form-check-label">Aktif Mi</label>
+                            <span asp-validation-for="AktifMi" class="text-danger"></span>
+                            <small class="form-text text-muted">İşaretlenirse etkinlik ana sayfada görünür olacaktır.</small>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Güncelle
+                            </button>
+                            <a href="/Organizator/Etkinlik" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i> Listeye Dön
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

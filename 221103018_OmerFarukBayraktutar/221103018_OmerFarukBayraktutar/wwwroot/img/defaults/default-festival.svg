@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <rect width="800" height="500" fill="#0a0a14"/>
+  
+  <!-- Sky Lanterns -->
+  <circle cx="100" cy="100" r="15" fill="#ffb74d" opacity="0.7">
+    <animate attributeName="cy" from="120" to="80" dur="4s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="200" cy="150" r="12" fill="#ffb74d" opacity="0.6">
+    <animate attributeName="cy" from="170" to="130" dur="5s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="300" cy="80" r="18" fill="#ffb74d" opacity="0.8">
+    <animate attributeName="cy" from="100" to="60" dur="6s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="400" cy="180" r="14" fill="#ffb74d" opacity="0.7">
+    <animate attributeName="cy" from="200" to="160" dur="4.5s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="500" cy="120" r="16" fill="#ffb74d" opacity="0.7">
+    <animate attributeName="cy" from="140" to="100" dur="3.5s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="600" cy="90" r="13" fill="#ffb74d" opacity="0.8">
+    <animate attributeName="cy" from="110" to="70" dur="5.5s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="700" cy="160" r="17" fill="#ffb74d" opacity="0.6">
+    <animate attributeName="cy" from="180" to="140" dur="4.8s" repeatCount="indefinite" />
+  </circle>
+
+  <!-- Crowd Silhouettes at bottom -->
+  <path d="M0,500 C100,480 250,490 400,485 C550,490 700,480 800,500 L800,500 L0,500 Z" fill="#000"/>
+</svg> 

@@ -1,0 +1,151 @@
+@model _221103018_OmerFarukBayraktutar.DAL.Models.Rezervasyon
+@{
+    ViewData["Title"] = "Rezervasyon Detayı";
+}
+
+<div class="container mt-4">
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <a asp-controller="Rezervasyon" asp-action="Rezervasyonlarim" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Rezervasyonlarıma Dön
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card border-primary">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-ticket-alt me-2"></i> Rezervasyon Detayı
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 text-center mb-3">
+                            <img src="@Model.Etkinlik?.ResimYolu" class="img-fluid rounded" alt="@Model.Etkinlik?.EtkinlikAdi" />
+                        </div>
+                        <div class="col-md-8">
+                            <h4>@Model.Etkinlik?.EtkinlikAdi</h4>
+                            <p class="text-muted">@Model.Etkinlik?.Aciklama</p>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <h5>Etkinlik Bilgileri</h5>
+                            <dl class="row">
+                                <dt class="col-sm-4">Kategori:</dt>
+                                <dd class="col-sm-8">@Model.Etkinlik?.Kategori?.KategoriAdi</dd>
+
+                                <dt class="col-sm-4">Tarih:</dt>
+                                <dd class="col-sm-8">@Model.Etkinlik?.Tarih.ToShortDateString()</dd>
+
+                                <dt class="col-sm-4">Saat:</dt>
+                                <dd class="col-sm-8">@(Model.Etkinlik?.BaslangicSaati?.ToString("hh\\:mm")) - @(Model.Etkinlik?.BitisSaati?.ToString("hh\\:mm"))</dd>
+
+                                <dt class="col-sm-4">Şehir:</dt>
+                                <dd class="col-sm-8">@Model.Etkinlik?.Sehir?.SehirAdi</dd>
+
+                                <dt class="col-sm-4">Adres:</dt>
+                                <dd class="col-sm-8">@Model.Etkinlik?.Adres</dd>
+                            </dl>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h5>Rezervasyon Bilgileri</h5>
+                            <dl class="row">
+                                <dt class="col-sm-6">Rezervasyon No:</dt>
+                                <dd class="col-sm-6">#@Model.RezervasyonId</dd>
+
+                                <dt class="col-sm-6">Bilet Sayısı:</dt>
+                                <dd class="col-sm-6">@Model.BiletSayisi</dd>
+
+                                <dt class="col-sm-6">Bilet Fiyatı:</dt>
+                                <dd class="col-sm-6">@Model.Etkinlik?.BiletFiyati.ToString("C")</dd>
+
+                                <dt class="col-sm-6">Toplam Tutar:</dt>
+                                <dd class="col-sm-6">@((Model.BiletSayisi * Model.Etkinlik?.BiletFiyati).Value.ToString("C"))</dd>
+
+                                <dt class="col-sm-6">Rezervasyon Tarihi:</dt>
+                                <dd class="col-sm-6">@Model.RezervasyonTarihi.ToString("dd.MM.yyyy HH:mm")</dd>
+
+                                <dt class="col-sm-6">Durum:</dt>
+                                <dd class="col-sm-6">
+                                    @if (Model.Iptal)
+                                    {
+                                        <span class="badge bg-danger">İptal Edildi</span>
+                                    }
+                                    else if (Model.Kullanildi)
+                                    {
+                                        <span class="badge bg-secondary">Kullanıldı</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-success">Aktif</span>
+                                    }
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 text-center">
+                        <div class="card bg-light p-3">
+                            <h5>Bilet Barkodu</h5>
+                            <div class="py-3">
+                                <img src="data:image/png;base64,@Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(Model.BarkodNo))" 
+                                     alt="Barkod" class="img-fluid" style="max-height: 100px;" />
+                            </div>
+                            <p class="mb-0">@Model.BarkodNo</p>
+                            <small class="text-muted">Bu barkod girişte kontrol edilecektir. Lütfen biletinizi yanınızda bulundurun.</small>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        @if (!Model.Iptal && !Model.Kullanildi && Model.Etkinlik?.Tarih > DateTime.Now)
+                        {
+                            <button type="button" class="btn btn-danger float-end" onclick="iptalOnayi(@Model.RezervasyonId)">
+                                <i class="fas fa-times"></i> Rezervasyonu İptal Et
+                            </button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- İptal Onayı Modal -->
+<div class="modal fade" id="iptalOnayi" tabindex="-1" aria-labelledby="iptalOnayiLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="iptalOnayiLabel">Rezervasyon İptal Onayı</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Rezervasyonunuzu iptal etmek istediğinize emin misiniz?</p>
+                <p class="text-danger">Bu işlem geri alınamaz ve ödemeniz iade politikamız doğrultusunda işleme alınacaktır.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Vazgeç</button>
+                <form asp-controller="Rezervasyon" asp-action="Iptal" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="id" value="@Model.RezervasyonId" />
+                    <button type="submit" class="btn btn-danger">İptal Et</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function iptalOnayi(rezervasyonId) {
+            var iptalModal = new bootstrap.Modal(document.getElementById('iptalOnayi'));
+            iptalModal.show();
+        }
+    </script>
+} 

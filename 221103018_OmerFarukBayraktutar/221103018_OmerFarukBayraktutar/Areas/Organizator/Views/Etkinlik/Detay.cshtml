@@ -1,0 +1,144 @@
+@model _221103018_OmerFarukBayraktutar.Areas.Organizator.Controllers.EtkinlikDetayViewModel
+@{
+    ViewData["Title"] = "Etkinlik Detayı";
+    Layout = "_OrganizatorLayout";
+}
+
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <a href="/Organizator/Etkinlik" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Listeye Dön
+            </a>
+            <a href="/Organizator/Etkinlik/Duzenle/@Model.Etkinlik.EtkinlikId" class="btn btn-warning">
+                <i class="fas fa-edit"></i> Düzenle
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-header bg-light">
+                    <h5 class="card-title mb-0">Etkinlik Bilgileri</h5>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-3">
+                        <img src="@Model.Etkinlik.ResimYolu" class="img-fluid rounded" alt="@Model.Etkinlik.EtkinlikAdi" style="max-height: 200px;">
+                    </div>
+                    <h4 class="mb-3">@Model.Etkinlik.EtkinlikAdi</h4>
+                    <p class="text-muted">@Model.Etkinlik.Aciklama</p>
+                    <hr />
+                    <dl class="row">
+                        <dt class="col-sm-5">Kategori:</dt>
+                        <dd class="col-sm-7">@Model.Etkinlik.Kategori?.KategoriAdi</dd>
+
+                        <dt class="col-sm-5">Şehir:</dt>
+                        <dd class="col-sm-7">@Model.Etkinlik.Sehir?.SehirAdi</dd>
+
+                        <dt class="col-sm-5">Adres:</dt>
+                        <dd class="col-sm-7">@Model.Etkinlik.Adres</dd>
+
+                        <dt class="col-sm-5">Tarih:</dt>
+                        <dd class="col-sm-7">@Model.Etkinlik.Tarih.ToShortDateString()</dd>
+
+                        <dt class="col-sm-5">Saat:</dt>
+                        <dd class="col-sm-7">@(Model.Etkinlik.BaslangicSaati?.ToString("hh\\:mm")) - @(Model.Etkinlik.BitisSaati?.ToString("hh\\:mm"))</dd>
+
+                        <dt class="col-sm-5">Bilet Fiyatı:</dt>
+                        <dd class="col-sm-7">@Model.Etkinlik.BiletFiyati.ToString("C")</dd>
+
+                        <dt class="col-sm-5">Toplam Kapasite:</dt>
+                        <dd class="col-sm-7">@Model.Etkinlik.ToplamKapasite</dd>
+
+                        <dt class="col-sm-5">Kalan Kapasite:</dt>
+                        <dd class="col-sm-7">@Model.Etkinlik.KalanKapasite</dd>
+
+                        <dt class="col-sm-5">Durum:</dt>
+                        <dd class="col-sm-7">
+                            @if (Model.Etkinlik.AktifMi)
+                            {
+                                <span class="badge bg-success">Aktif</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Pasif</span>
+                            }
+                        </dd>
+
+                        <dt class="col-sm-5">Oluşturulma Tarihi:</dt>
+                        <dd class="col-sm-7">@Model.Etkinlik.OlusturulmaTarihi.ToString("dd.MM.yyyy HH:mm")</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8 mb-4">
+            <div class="card">
+                <div class="card-header bg-light">
+                    <h5 class="card-title mb-0">Rezervasyonlar</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover datatable" id="rezervasyonTable">
+                            <thead>
+                                <tr>
+                                    <th>Rezervasyon ID</th>
+                                    <th>Müşteri</th>
+                                    <th>Bilet Sayısı</th>
+                                    <th>Rezervasyon Tarihi</th>
+                                    <th>Barkod No</th>
+                                    <th>Durum</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.Rezervasyonlar != null && Model.Rezervasyonlar.Any())
+                                {
+                                    foreach (var rezervasyon in Model.Rezervasyonlar)
+                                    {
+                                        <tr>
+                                            <td>@rezervasyon.RezervasyonId</td>
+                                            <td>@(rezervasyon.Kullanici?.Ad + " " + rezervasyon.Kullanici?.Soyad)</td>
+                                            <td>@rezervasyon.BiletSayisi</td>
+                                            <td>@rezervasyon.RezervasyonTarihi.ToString("dd.MM.yyyy HH:mm")</td>
+                                            <td>@rezervasyon.BarkodNo</td>
+                                            <td>
+                                                @if (rezervasyon.Iptal)
+                                                {
+                                                    <span class="badge bg-danger">İptal Edildi</span>
+                                                }
+                                                else if (rezervasyon.Kullanildi)
+                                                {
+                                                    <span class="badge bg-info">Kullanıldı</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge bg-success">Aktif</span>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="6" class="text-center">Henüz rezervasyon bulunmamaktadır.</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Rezervasyon tablosunu başlat
+            $(document).trigger('reinitialize-datatables', ['#rezervasyonTable']);
+        });
+    </script>
+} 

@@ -1,0 +1,6 @@
+<!-- Etkinlik varsayılan görseli -->
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#f8f9fa"/>
+  <text x="50%" y="50%" font-family="Arial" font-size="24" text-anchor="middle" fill="#6c757d">Etkinlik Görseli</text>
+  <text x="50%" y="50%" dy="30" font-family="Arial" font-size="14" text-anchor="middle" fill="#6c757d">Resim Bulunamadı</text>
+</svg>

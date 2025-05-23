@@ -1,0 +1,191 @@
+@{
+    ViewData["Title"] = "Bilet Kontrol";
+    Layout = "_OrganizatorLayout";
+}
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-area="Organizator" asp-controller="Home" asp-action="Index">Ana Sayfa</a></li>
+                    <li class="breadcrumb-item"><a asp-area="Organizator" asp-controller="Rezervasyon" asp-action="Index">Rezervasyonlar</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Bilet Kontrol</li>
+                </ol>
+            </nav>
+            <h2><i class="fas fa-qrcode me-2"></i>Bilet Kontrol</h2>
+            <p class="text-muted">Bilet barkodu/QR kodunu taratarak veya manuel girerek bilet kontrolü yapabilirsiniz</p>
+        </div>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle me-2"></i> @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-circle me-2"></i> @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-light">
+                    <h5 class="card-title mb-0">Manuel Bilet Kontrolü</h5>
+                </div>
+                <div class="card-body">
+                    <form asp-action="BiletKontrol" method="post">
+                        @Html.AntiForgeryToken()
+                        <div class="mb-3">
+                            <label for="barkodNo" class="form-label">Bilet Kodu (Barkod/QR)</label>
+                            <input type="text" class="form-control" id="barkodNo" name="barkodNo" 
+                                   placeholder="Bilet kodunu giriniz" required>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-search me-2"></i>Bileti Kontrol Et
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-light">
+                    <h5 class="card-title mb-0">Kamera ile QR Kod Tarama</h5>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-3">
+                        <div id="qr-reader" class="mx-auto" style="width: 100%; max-width: 400px;"></div>
+                    </div>
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        QR kodu kameraya doğru tuttuğunuzda otomatik olarak taranacaktır.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-light">
+                    <h5 class="card-title mb-0">Bilet Kontrol Talimatları</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="fw-bold"><i class="fas fa-info-circle me-2"></i>Nasıl Çalışır?</h6>
+                            <ul>
+                                <li>Bilet kodunu yukarıdaki manuel giriş alanına girin veya QR kodu kamera ile taratın</li>
+                                <li>Geçerli bir bilet kodu girdiğinizde, bilet detaylarını göreceksiniz</li>
+                                <li>Bileti kullanıldı olarak işaretlemek için "Kullandı Olarak İşaretle" butonuna tıklayın</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="fw-bold"><i class="fas fa-exclamation-triangle me-2"></i>Önemli Bilgiler</h6>
+                            <ul>
+                                <li>Bir bilet kodu sadece bir kez kullanılabilir</li>
+                                <li>İptal edilmiş biletler geçersizdir</li>
+                                <li>Kullanılmış biletler tekrar kullanılamaz</li>
+                                <li>Etkinlik tarihinden sonraki bilet kontrolleri sistem tarafından reddedilir</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://unpkg.com/html5-qrcode@2.3.4/html5-qrcode.min.js"></script>
+    <script>
+        function onScanSuccess(decodedText, decodedResult) {
+            // QR kod başarıyla tarandığında bilet kontrol formunu otomatik doldur ve gönder
+            document.getElementById('barkodNo').value = decodedText;
+            
+            // Formu otomatik gönder
+            var form = document.querySelector('form');
+            if (form) {
+                form.submit();
+            }
+        }
+
+        function onScanFailure(error) {
+            // QR kod tarama hatası olduğunda bu fonksiyon çalışır (hata mesajı göstermeye gerek yok)
+            console.warn(`QR tarama hatası: ${error}`);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // QR kod okuyucu başlat
+            let html5QrcodeScanner = new Html5Qrcode("qr-reader");
+            let scannerActive = false;
+            
+            // Kamera başlatma fonksiyonu
+            function startScanner() {
+                const qrConfig = {
+                    fps: 10,
+                    qrbox: { width: 250, height: 250 }
+                };
+                
+                // Arka kamera varsa onu kullan
+                Html5Qrcode.getCameras().then(cameras => {
+                    if (cameras && cameras.length) {
+                        // Tercihen arka kamerayı kullan (genellikle son kamera)
+                        const cameraId = cameras[cameras.length - 1].id;
+                        html5QrcodeScanner.start(
+                            cameraId, 
+                            qrConfig, 
+                            onScanSuccess, 
+                            onScanFailure
+                        ).then(() => {
+                            scannerActive = true;
+                        }).catch(err => {
+                            console.error("Kamera başlatılamadı:", err);
+                            // Kullanıcıya bilgi ver
+                            document.getElementById('qr-reader').innerHTML = `
+                                <div class="alert alert-warning">
+                                    <i class="fas fa-exclamation-circle me-2"></i>
+                                    Kamera başlatılamadı. Lütfen kamera izni verdiğinizden emin olun ve sayfayı yenileyin.
+                                </div>
+                            `;
+                        });
+                    } else {
+                        document.getElementById('qr-reader').innerHTML = `
+                            <div class="alert alert-warning">
+                                <i class="fas fa-exclamation-circle me-2"></i>
+                                Kamera bulunamadı. Lütfen manuel olarak bilet kodunu girin.
+                            </div>
+                        `;
+                    }
+                }).catch(err => {
+                    console.error("Kamera listesi alınamadı:", err);
+                });
+            }
+            
+            // Sayfa kapanırken kamera kapatma
+            window.addEventListener('beforeunload', function() {
+                if (scannerActive) {
+                    try {
+                        html5QrcodeScanner.stop();
+                    } catch (err) {
+                        console.error("Scanner kapatılamadı:", err);
+                    }
+                }
+            });
+            
+            // Kamera başlat
+            startScanner();
+        });
+    </script>
+} 

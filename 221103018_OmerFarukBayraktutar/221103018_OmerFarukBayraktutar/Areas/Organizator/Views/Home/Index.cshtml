@@ -1,0 +1,169 @@
+@model _221103018_OmerFarukBayraktutar.Areas.Organizator.Controllers.OrganizatorDashboardViewModel
+@{
+    ViewData["Title"] = "Organizatör Paneli";
+    Layout = "_OrganizatorLayout";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <h2>Hoş Geldiniz, @User.Identity?.Name</h2>
+            <p>Etkinliklerinizi yönetmek için organizatör panelini kullanabilirsiniz.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 mb-4">
+            <div class="card bg-primary text-white h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Toplam Etkinlik</h5>
+                    <h2 class="display-4">@Model.ToplamEtkinlikSayisi</h2>
+                </div>
+                <div class="card-footer">
+                    <a asp-area="Organizator" asp-controller="Etkinlik" asp-action="Index" class="text-white">Detaylar <i class="fas fa-angle-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card bg-success text-white h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Aktif Etkinlikler</h5>
+                    <h2 class="display-4">@Model.AktifEtkinlikSayisi</h2>
+                </div>
+                <div class="card-footer">
+                    <a asp-area="Organizator" asp-controller="Etkinlik" asp-action="Index" class="text-white">Detaylar <i class="fas fa-angle-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card bg-warning text-white h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Toplam Rezervasyon</h5>
+                    <h2 class="display-4">@Model.ToplamRezervasyonSayisi</h2>
+                </div>
+                <div class="card-footer">
+                    <a asp-area="Organizator" asp-controller="Rezervasyon" asp-action="Index" class="text-white">Detaylar <i class="fas fa-angle-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card bg-info text-white h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Bugünkü Rezervasyonlar</h5>
+                    <h2 class="display-4">@Model.BugunkuRezervasyonSayisi</h2>
+                </div>
+                <div class="card-footer">
+                    <a asp-area="Organizator" asp-controller="Rezervasyon" asp-action="Index" class="text-white">Detaylar <i class="fas fa-angle-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-light">
+                    <h5 class="card-title mb-0">Son Etkinlikler</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Etkinlik Adı</th>
+                                    <th>Kategori</th>
+                                    <th>Tarih</th>
+                                    <th>Bilet Fiyatı</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if(Model.SonEtkinlikler != null && Model.SonEtkinlikler.Any())
+                                {
+                                    foreach (var etkinlik in Model.SonEtkinlikler)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <a asp-area="Organizator" asp-controller="Etkinlik" asp-action="Detay" asp-route-id="@etkinlik.EtkinlikId">
+                                                    @etkinlik.EtkinlikAdi
+                                                </a>
+                                            </td>
+                                            <td>@etkinlik.Kategori?.KategoriAdi</td>
+                                            <td>@etkinlik.Tarih.ToShortDateString()</td>
+                                            <td>@etkinlik.BiletFiyati.ToString("C")</td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="4" class="text-center">Henüz etkinlik bulunmamaktadır.</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a asp-area="Organizator" asp-controller="Etkinlik" asp-action="Ekle" class="btn btn-sm btn-primary">
+                        <i class="fas fa-plus-circle me-1"></i> Yeni Etkinlik Ekle
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-light">
+                    <h5 class="card-title mb-0">Son Rezervasyonlar</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Etkinlik</th>
+                                    <th>Müşteri</th>
+                                    <th>Tarih</th>
+                                    <th>Bilet Sayısı</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if(Model.SonRezervasyonlar != null && Model.SonRezervasyonlar.Any())
+                                {
+                                    foreach (var rezervasyon in Model.SonRezervasyonlar)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <a asp-area="Organizator" asp-controller="Etkinlik" asp-action="Detay" asp-route-id="@rezervasyon.EtkinlikId">
+                                                    @rezervasyon.Etkinlik?.EtkinlikAdi
+                                                </a>
+                                            </td>
+                                            <td>@(rezervasyon.Kullanici?.Ad + " " + rezervasyon.Kullanici?.Soyad)</td>
+                                            <td>@rezervasyon.RezervasyonTarihi.ToShortDateString()</td>
+                                            <td>
+                                                <a asp-area="Organizator" asp-controller="Rezervasyon" asp-action="Detay" asp-route-id="@rezervasyon.RezervasyonId" 
+                                                   class="badge bg-primary">
+                                                    @rezervasyon.BiletSayisi bilet
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="4" class="text-center">Henüz rezervasyon bulunmamaktadır.</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a asp-area="Organizator" asp-controller="Rezervasyon" asp-action="Index" class="btn btn-sm btn-info">
+                        <i class="fas fa-ticket-alt me-1"></i> Tüm Rezervasyonları Görüntüle
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

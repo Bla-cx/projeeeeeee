@@ -1,0 +1,132 @@
+@model _221103018_OmerFarukBayraktutar.DAL.Models.Rezervasyon
+@{
+    ViewData["Title"] = "Rezervasyon Detayları";
+    Layout = "_AdminLayout";
+}
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Rezervasyon Detayları</h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h6 class="m-0 font-weight-bold text-primary">Rezervasyon Bilgileri</h6>
+                        </div>
+                        <div class="card-body">
+                            <dl class="row">
+                                <dt class="col-sm-4">Rezervasyon ID:</dt>
+                                <dd class="col-sm-8">@Model.RezervasyonId</dd>
+                                
+                                <dt class="col-sm-4">Rezervasyon Tarihi:</dt>
+                                <dd class="col-sm-8">@Model.RezervasyonTarihi.ToString("dd.MM.yyyy HH:mm")</dd>
+                                
+                                <dt class="col-sm-4">Bilet Sayısı:</dt>
+                                <dd class="col-sm-8">@Model.BiletSayisi</dd>
+                                
+                                <dt class="col-sm-4">Toplam Fiyat:</dt>
+                                <dd class="col-sm-8">@Model.ToplamTutar.ToString("C")</dd>
+                                
+                                <dt class="col-sm-4">Barkod No:</dt>
+                                <dd class="col-sm-8">@Model.BarkodNo</dd>
+                                
+                                <dt class="col-sm-4">Durum:</dt>
+                                <dd class="col-sm-8">
+                                    @if (Model.Iptal)
+                                    {
+                                        <span class="badge bg-danger">İptal Edildi</span>
+                                    }
+                                    else if (Model.Kullanildi)
+                                    {
+                                        <span class="badge bg-info">Kullanıldı</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-success">Aktif</span>
+                                    }
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h6 class="m-0 font-weight-bold text-primary">Etkinlik Bilgileri</h6>
+                        </div>
+                        <div class="card-body">
+                            <dl class="row">
+                                <dt class="col-sm-4">Etkinlik ID:</dt>
+                                <dd class="col-sm-8">@Model.EtkinlikId</dd>
+                                
+                                <dt class="col-sm-4">Etkinlik Adı:</dt>
+                                <dd class="col-sm-8">
+                                    <a href="@Url.Action("Detay", "Etkinlik", new { area = "Admin", id = Model.EtkinlikId })">
+                                        @Model.Etkinlik?.EtkinlikAdi
+                                    </a>
+                                </dd>
+                                
+                                <dt class="col-sm-4">Etkinlik Tarihi:</dt>
+                                <dd class="col-sm-8">@Model.Etkinlik?.Tarih.ToString("dd.MM.yyyy")</dd>
+                                
+                                <dt class="col-sm-4">Başlangıç Saati:</dt>
+                                <dd class="col-sm-8">@Model.Etkinlik?.BaslangicSaati?.ToString(@"hh\:mm")</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h6 class="m-0 font-weight-bold text-primary">Müşteri Bilgileri</h6>
+                        </div>
+                        <div class="card-body">
+                            <dl class="row">
+                                <dt class="col-sm-4">Müşteri ID:</dt>
+                                <dd class="col-sm-8">@Model.KullaniciId</dd>
+                                
+                                <dt class="col-sm-4">Ad Soyad:</dt>
+                                <dd class="col-sm-8">@(Model.Kullanici?.Ad + " " + Model.Kullanici?.Soyad)</dd>
+                                
+                                <dt class="col-sm-4">E-posta:</dt>
+                                <dd class="col-sm-8">@Model.Kullanici?.Email</dd>
+                                
+                                <dt class="col-sm-4">Telefon:</dt>
+                                <dd class="col-sm-8">@Model.Kullanici?.Telefon</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                @if (!Model.Iptal && !Model.Kullanildi)
+                {
+                    <form asp-action="Iptal" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@Model.RezervasyonId" />
+                        <button type="submit" class="btn btn-warning" 
+                                onclick="return confirm('Bu rezervasyonu iptal etmek istediğinize emin misiniz?')">
+                            <i class="fas fa-times"></i> İptal Et
+                        </button>
+                    </form>
+                    <form asp-action="Kullanildi" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@Model.RezervasyonId" />
+                        <button type="submit" class="btn btn-success" 
+                                onclick="return confirm('Bu rezervasyonu kullanılmış olarak işaretlemek istediğinize emin misiniz?')">
+                            <i class="fas fa-check"></i> Kullanıldı
+                        </button>
+                    </form>
+                }
+                <a asp-action="Delete" asp-route-id="@Model.RezervasyonId" class="btn btn-danger">
+                    <i class="fas fa-trash"></i> Sil
+                </a>
+                <a asp-action="Index" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Listeye Dön
+                </a>
+            </div>
+        </div>
+    </div>
+</div> 

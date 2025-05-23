@@ -1,0 +1,45 @@
+@{
+    ViewData["Title"] = "Veritabanı Hatası - Biletini Ayır";
+    Layout = "_Layout";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <div class="mb-4">
+                <i class="bi bi-database-x" style="font-size: 5rem; color: #dc3545;"></i>
+            </div>
+            <h1 class="display-4 mb-4">Veritabanı Bağlantı Sorunu</h1>
+            <div class="alert alert-danger mb-4">
+                <p class="mb-0">Veritabanı sunucusuna bağlanırken bir sorun yaşandı. Bu geçici bir sorun olabilir.</p>
+            </div>
+            <p class="lead mb-4">Bu sorun için özür dileriz. Teknik ekibimiz sorunu çözmek için çalışıyor.</p>
+            
+            <div class="card bg-light mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Yapabilecekleriniz:</h5>
+                    <ul class="text-start">
+                        <li>Sayfayı yenileyin ve tekrar deneyin</li>
+                        <li>Birkaç dakika sonra tekrar giriş yapın</li>
+                        <li>Tarayıcı çerezlerinizi temizleyin</li>
+                        <li>İnternet bağlantınızı kontrol edin</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-4">
+                <a href="/" class="btn btn-primary me-2">Sayfayı Yenile</a>
+                <a href="/debug-startup" class="btn btn-outline-secondary">Sistem Durumu</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // 30 saniyede bir sayfayı yeniden yükleme
+        setTimeout(function() {
+            window.location.reload();
+        }, 30000);
+    </script>
+} 

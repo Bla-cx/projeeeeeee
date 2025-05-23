@@ -1,0 +1,5 @@
+2025-05-22 00:32:12.927 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-22 00:50:53.511 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-22 01:01:51.664 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-22 01:40:24.602 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-22 02:10:36.588 +03:00 [WRN] Failed to determine the https port for redirect.

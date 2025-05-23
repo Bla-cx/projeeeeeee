@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .container {
+      width: 800px;
+      height: 500px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(to bottom, #051a33, #0a0a14);
+    }
+    
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 2px 1px rgba(255, 255, 255, 0.7);
+    }
+    
+    .lantern {
+      position: absolute;
+      width: 30px;
+      height: 40px;
+      border-radius: 50%;
+    }
+    
+    .lantern::before {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 15px;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 2px;
+    }
+    
+    .lantern1 { top: 80px; left: 100px; background: radial-gradient(circle at center, rgba(255, 180, 0, 0.8), rgba(255, 100, 0, 0.4)); animation: float 8s infinite ease-in-out; }
+    .lantern2 { top: 60px; left: 250px; background: radial-gradient(circle at center, rgba(255, 100, 255, 0.8), rgba(180, 0, 180, 0.4)); animation: float 9s infinite ease-in-out; }
+    .lantern3 { top: 100px; left: 400px; background: radial-gradient(circle at center, rgba(255, 255, 0, 0.8), rgba(180, 180, 0, 0.4)); animation: float 10s infinite ease-in-out; }
+    .lantern4 { top: 70px; left: 550px; background: radial-gradient(circle at center, rgba(0, 255, 255, 0.8), rgba(0, 180, 180, 0.4)); animation: float 7s infinite ease-in-out; }
+    .lantern5 { top: 90px; left: 700px; background: radial-gradient(circle at center, rgba(0, 255, 0, 0.8), rgba(0, 180, 0, 0.4)); animation: float 11s infinite ease-in-out; }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .ground {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 150px;
+      background: #1b1b1b;
+      border-top: 2px solid #333;
+      z-index: 2;
+    }
+    
+    .stage {
+      position: absolute;
+      bottom: 150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 500px;
+      height: 80px;
+      background: #333;
+      border: 2px solid #444;
+      z-index: 3;
+    }
+    
+    .crowd {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100px;
+      z-index: 4;
+      background: 
+        radial-gradient(circle at 5% 0, #222 15px, transparent 16px) 0 0/60px 60px,
+        radial-gradient(circle at 25% 10px, #222 15px, transparent 16px) 0 0/60px 60px,
+        radial-gradient(circle at 45% 0, #222 15px, transparent 16px) 0 0/60px 60px,
+        radial-gradient(circle at 65% 10px, #222 15px, transparent 16px) 0 0/60px 60px,
+        radial-gradient(circle at 85% 0, #222 15px, transparent 16px) 0 0/60px 60px;
+    }
+    
+    .firework {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+    
+    .firework1 { top: 120px; left: 200px; background: radial-gradient(circle at center, white, red); box-shadow: 0 0 20px 10px rgba(255, 0, 0, 0.5); }
+    .firework2 { top: 80px; left: 600px; background: radial-gradient(circle at center, white, blue); box-shadow: 0 0 20px 10px rgba(0, 0, 255, 0.5); }
+    .firework3 { top: 150px; left: 350px; background: radial-gradient(circle at center, white, green); box-shadow: 0 0 20px 10px rgba(0, 255, 0, 0.5); }
+    
+    .text {
+      position: absolute;
+      top: 40px;
+      width: 100%;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      font-size: 32px;
+      color: white;
+      text-transform: uppercase;
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(255,255,255,0.7);
+      z-index: 5;
+    }
+  </style>
+  <script>
+    window.onload = function() {
+      const stars = document.querySelector('.stars');
+      for (let i = 0; i < 100; i++) {
+        let star = document.createElement('div');
+        star.className = 'star';
+        star.style.top = Math.random() * 300 + 'px';
+        star.style.left = Math.random() * 800 + 'px';
+        stars.appendChild(star);
+      }
+    };
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="text">FESTIVAL</div>
+    <div class="stars"></div>
+    <div class="lantern lantern1"></div>
+    <div class="lantern lantern2"></div>
+    <div class="lantern lantern3"></div>
+    <div class="lantern lantern4"></div>
+    <div class="lantern lantern5"></div>
+    <div class="firework firework1"></div>
+    <div class="firework firework2"></div>
+    <div class="firework firework3"></div>
+    <div class="stage"></div>
+    <div class="ground"></div>
+    <div class="crowd"></div>
+  </div>
+</body>
+</html> 

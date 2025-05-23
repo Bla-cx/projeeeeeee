@@ -1,0 +1,71 @@
+@model _221103018_OmerFarukBayraktutar.DAL.Models.Rezervasyon
+@{
+    ViewData["Title"] = "Rezervasyon Sil";
+    Layout = "_AdminLayout";
+}
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Rezervasyon Silme Onayı</h6>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-danger">
+                <h5><i class="fas fa-exclamation-triangle"></i> Uyarı!</h5>
+                <p>Bu rezervasyonu silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.</p>
+            </div>
+            
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <dl class="row">
+                        <dt class="col-sm-4">Rezervasyon ID:</dt>
+                        <dd class="col-sm-8">@Model.RezervasyonId</dd>
+                        
+                        <dt class="col-sm-4">Etkinlik:</dt>
+                        <dd class="col-sm-8">@Model.Etkinlik?.EtkinlikAdi</dd>
+                        
+                        <dt class="col-sm-4">Müşteri:</dt>
+                        <dd class="col-sm-8">@(Model.Kullanici?.Ad + " " + Model.Kullanici?.Soyad)</dd>
+                        
+                        <dt class="col-sm-4">Bilet Sayısı:</dt>
+                        <dd class="col-sm-8">@Model.BiletSayisi</dd>
+                        
+                        <dt class="col-sm-4">Toplam Fiyat:</dt>
+                        <dd class="col-sm-8">@Model.ToplamTutar.ToString("C")</dd>
+                        
+                        <dt class="col-sm-4">Rezervasyon Tarihi:</dt>
+                        <dd class="col-sm-8">@Model.RezervasyonTarihi.ToString("dd.MM.yyyy HH:mm")</dd>
+                        
+                        <dt class="col-sm-4">Durum:</dt>
+                        <dd class="col-sm-8">
+                            @if (Model.Iptal)
+                            {
+                                <span class="badge bg-danger">İptal Edildi</span>
+                            }
+                            else if (Model.Kullanildi)
+                            {
+                                <span class="badge bg-info">Kullanıldı</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-success">Aktif</span>
+                            }
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            
+            <form asp-action="Delete" method="post">
+                <input type="hidden" name="id" value="@Model.RezervasyonId" />
+                <div class="form-group">
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-trash"></i> Sil
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> İptal
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> 

@@ -1,0 +1,198 @@
+@model _221103018_OmerFarukBayraktutar.DAL.Models.Rezervasyon
+@{
+    ViewData["Title"] = "Bilet Kontrol Sonucu";
+    Layout = "_OrganizatorLayout";
+    
+    string durumClass = "badge bg-success";
+    string durumText = "Aktif";
+    bool biletGecerli = !Model.Iptal && !Model.Kullanildi;
+                                
+    if (Model.Iptal)
+    {
+        durumClass = "badge bg-danger";
+        durumText = "İptal Edildi";
+    }
+    else if (Model.Kullanildi)
+    {
+        durumClass = "badge bg-secondary";
+        durumText = "Kullanıldı";
+    }
+}
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-area="Organizator" asp-controller="Home" asp-action="Index">Ana Sayfa</a></li>
+                    <li class="breadcrumb-item"><a asp-area="Organizator" asp-controller="Rezervasyon" asp-action="Index">Rezervasyonlar</a></li>
+                    <li class="breadcrumb-item"><a asp-area="Organizator" asp-controller="Rezervasyon" asp-action="BiletKontrol">Bilet Kontrol</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Kontrol Sonucu</li>
+                </ol>
+            </nav>
+            <h2><i class="fas fa-qrcode me-2"></i>Bilet Kontrol Sonucu</h2>
+        </div>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle me-2"></i> @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-circle me-2"></i> @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-md-8 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-light">
+                    <h5 class="card-title mb-0">Bilet Bilgileri</h5>
+                </div>
+                <div class="card-body">
+                    @if (biletGecerli)
+                    {
+                        <div class="alert alert-success text-center mb-4">
+                            <i class="fas fa-check-circle fa-3x mb-3"></i>
+                            <h4>Geçerli Bilet</h4>
+                            <p>Bu bilet geçerlidir ve henüz kullanılmamıştır.</p>
+                        </div>
+                    }
+                    else if (Model.Iptal)
+                    {
+                        <div class="alert alert-danger text-center mb-4">
+                            <i class="fas fa-times-circle fa-3x mb-3"></i>
+                            <h4>İptal Edilmiş Bilet</h4>
+                            <p>Bu bilet iptal edilmiştir ve geçersizdir.</p>
+                        </div>
+                    }
+                    else if (Model.Kullanildi)
+                    {
+                        <div class="alert alert-warning text-center mb-4">
+                            <i class="fas fa-exclamation-circle fa-3x mb-3"></i>
+                            <h4>Kullanılmış Bilet</h4>
+                            <p>Bu bilet daha önce kullanılmıştır.</p>
+                        </div>
+                    }
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <p class="mb-1 text-muted">Bilet Kodu</p>
+                            <h5>@Model.BarkodNo</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="mb-1 text-muted">Durum</p>
+                            <h5><span class="@durumClass">@durumText</span></h5>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <p class="mb-1 text-muted">Etkinlik</p>
+                            <h5>@Model.Etkinlik?.EtkinlikAdi</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="mb-1 text-muted">Tarih ve Saat</p>
+                            <h5>@Model.Etkinlik?.Tarih.ToString("dd/MM/yyyy") - @Model.Etkinlik?.BaslangicSaati.ToString()</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <p class="mb-1 text-muted">Müşteri</p>
+                            <h5>@(Model.Kullanici?.Ad + " " + Model.Kullanici?.Soyad)</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="mb-1 text-muted">Bilet Sayısı</p>
+                            <h5>@Model.BiletSayisi</h5>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <p class="mb-1 text-muted">Toplam Tutar</p>
+                            <h5>@Model.ToplamTutar.ToString("C")</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-light">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a asp-action="BiletKontrol" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left me-2"></i>Yeni Bilet Kontrol Et
+                        </a>
+
+                        @if (biletGecerli)
+                        {
+                            <form asp-action="BiletKullan" method="post">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="id" value="@Model.RezervasyonId" />
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fas fa-check me-2"></i>Bileti Kullanıldı İşaretle
+                                </button>
+                            </form>
+                        }
+                        else
+                        {
+                            <button class="btn btn-success" disabled>
+                                <i class="fas fa-check me-2"></i>Bileti Kullan
+                            </button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-light">
+                    <h5 class="card-title mb-0">Müşteri Bilgileri</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <p class="mb-1 text-muted">İsim</p>
+                        <h5>@(Model.Kullanici?.Ad + " " + Model.Kullanici?.Soyad)</h5>
+                    </div>
+                    <div class="mb-3">
+                        <p class="mb-1 text-muted">E-posta</p>
+                        <h5>@Model.Kullanici?.Email</h5>
+                    </div>
+                    <div class="mb-3">
+                        <p class="mb-1 text-muted">Telefon</p>
+                        <h5>@Model.Kullanici?.PhoneNumber</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm">
+                <div class="card-header bg-light">
+                    <h5 class="card-title mb-0">Rezervasyon Detayları</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <p class="mb-1 text-muted">Rezervasyon No</p>
+                        <h5>@Model.RezervasyonId</h5>
+                    </div>
+                    <div class="mb-3">
+                        <p class="mb-1 text-muted">Rezervasyon Tarihi</p>
+                        <h5>@Model.RezervasyonTarihi.ToString("dd/MM/yyyy HH:mm")</h5>
+                    </div>
+                    <div class="mb-3">
+                        <p class="mb-1 text-muted">Toplam Tutar</p>
+                        <h5>@Model.ToplamTutar.ToString("C")</h5>
+                    </div>
+                </div>
+                <div class="card-footer bg-light">
+                    <a asp-action="Detay" asp-route-id="@Model.RezervasyonId" class="btn btn-primary btn-sm">
+                        <i class="fas fa-eye me-2"></i>Detaylı İncele
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

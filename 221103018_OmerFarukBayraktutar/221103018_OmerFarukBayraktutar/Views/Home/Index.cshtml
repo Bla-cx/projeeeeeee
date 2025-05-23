@@ -1,0 +1,253 @@
+﻿@model List<Etkinlik>
+@{
+    ViewData["Title"] = "Ana Sayfa - Biletini Ayır";
+}
+
+@if (ViewBag.DbError != null)
+{
+    <div class="alert alert-danger mt-4">
+        <strong>Uyarı!</strong> @ViewBag.DbError
+    </div>
+}
+
+<!-- Ana Slider -->
+<div id="mainCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="hero-slide" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/img/defaults/default-slider-concert-new.svg') center/cover no-repeat;">
+                <div class="container position-relative py-5 text-white text-center" style="min-height: 500px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <h1 class="display-3 fw-bold mb-4 slide-title">Müziğin Ritmiyle Buluşun</h1>
+                    <p class="lead mb-4 slide-text">Konserler, festivaller ve daha fazlası için biletlerinizi hemen alın!</p>
+                    <a asp-controller="Etkinlik" asp-action="Listele" asp-route-kategoriId="1" class="btn btn-primary btn-lg px-4 py-2 rounded-pill">Konser Biletleri</a>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="hero-slide" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/img/defaults/default-slider-theater-new.svg') center/cover no-repeat;">
+                <div class="container position-relative py-5 text-white text-center" style="min-height: 500px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <h1 class="display-3 fw-bold mb-4 slide-title">Sanatın Büyüsünü Yaşayın</h1>
+                    <p class="lead mb-4 slide-text">Tiyatro, sergi ve sanat etkinlikleri için yerinizi ayırtın!</p>
+                    <a asp-controller="Etkinlik" asp-action="Listele" asp-route-kategoriId="2" class="btn btn-primary btn-lg px-4 py-2 rounded-pill">Tiyatro Biletleri</a>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="hero-slide" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/img/defaults/default-slider-festival-new.svg') center/cover no-repeat;">
+                <div class="container position-relative py-5 text-white text-center" style="min-height: 500px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <h1 class="display-3 fw-bold mb-4 slide-title">Festivaller Dolu Bir Yaz</h1>
+                    <p class="lead mb-4 slide-text">Türkiye'nin en büyük festivallerine katılın, unutulmaz anılar biriktirin!</p>
+                    <a asp-controller="Etkinlik" asp-action="Listele" asp-route-kategoriId="3" class="btn btn-primary btn-lg px-4 py-2 rounded-pill">Festival Biletleri</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Önceki</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Sonraki</span>
+    </button>
+</div>
+
+<!-- Hızlı Kategori Erişim Bölümü -->
+<div class="container mb-5">
+    <div class="row g-4">
+        <div class="col-md-3">
+            <div class="category-card text-center p-4 h-100 rounded" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/img/defaults/default-category-concert.svg') center/cover no-repeat; background-color: #0D47A1;">
+                <div class="category-icon mb-3">
+                    <i class="bi bi-music-note-beamed text-white" style="font-size: 3rem;"></i>
+                </div>
+                <h3 class="text-white mb-3">Konserler</h3>
+                <a asp-controller="Etkinlik" asp-action="Listele" asp-route-kategoriId="1" class="btn btn-outline-light rounded-pill">Keşfet</a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="category-card text-center p-4 h-100 rounded" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/img/defaults/default-category-theater.svg') center/cover no-repeat; background-color: #4A148C;">
+                <div class="category-icon mb-3">
+                    <i class="bi bi-mask text-white" style="font-size: 3rem;"></i>
+                </div>
+                <h3 class="text-white mb-3">Tiyatro</h3>
+                <a asp-controller="Etkinlik" asp-action="Listele" asp-route-kategoriId="2" class="btn btn-outline-light rounded-pill">Keşfet</a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="category-card text-center p-4 h-100 rounded" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/img/defaults/default-category-festival.svg') center/cover no-repeat; background-color: #3E2723;">
+                <div class="category-icon mb-3">
+                    <i class="bi bi-calendar-event text-white" style="font-size: 3rem;"></i>
+                </div>
+                <h3 class="text-white mb-3">Festivaller</h3>
+                <a asp-controller="Etkinlik" asp-action="Listele" asp-route-kategoriId="3" class="btn btn-outline-light rounded-pill">Keşfet</a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="category-card text-center p-4 h-100 rounded" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/img/defaults/default-category-sports.svg') center/cover no-repeat; background-color: #1B5E20;">
+                <div class="category-icon mb-3">
+                    <i class="bi bi-trophy text-white" style="font-size: 3rem;"></i>
+                </div>
+                <h3 class="text-white mb-3">Spor</h3>
+                <a asp-controller="Etkinlik" asp-action="Listele" asp-route-kategoriId="4" class="btn btn-outline-light rounded-pill">Keşfet</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Popüler Etkinlikler -->
+<div class="container mb-5">
+    <div class="section-header text-center mb-5">
+        <h2 class="fw-bold display-5 mb-3 animate-on-scroll">Popüler Etkinlikler</h2>
+        <div class="divider mx-auto animate-on-scroll delay-100"></div>
+        <p class="lead text-muted animate-on-scroll delay-200">En çok ilgi gören etkinlikleri kaçırmayın!</p>
+    </div>
+    
+    <div class="row g-4">
+        @if (Model != null && Model.Any())
+        {
+            foreach (var etkinlik in Model)
+            {                <div class="col-lg-4 col-md-6">
+                    <div class="card etkinlik-card h-100 shadow-sm border-0 rounded-3 overflow-hidden">
+                        <div class="position-relative">
+                            <img src="@(string.IsNullOrEmpty(etkinlik.ResimYolu) ? 
+                                    (etkinlik.Kategori?.KategoriAdi?.ToLower() == "konser" ? "/img/defaults/event-concert.svg" :
+                                    etkinlik.Kategori?.KategoriAdi?.ToLower() == "tiyatro" ? "/img/defaults/event-theater.svg" :
+                                    etkinlik.Kategori?.KategoriAdi?.ToLower() == "festival" ? "/img/defaults/event-festival.svg" :
+                                    etkinlik.Kategori?.KategoriAdi?.ToLower() == "spor" ? "/img/defaults/event-sports.svg" :
+                                    "/img/defaults/default-event.svg") : 
+                                    etkinlik.ResimYolu)" 
+                                    class="card-img-top" alt="@etkinlik.EtkinlikAdi" style="height: 220px; object-fit: cover;">
+                            <div class="etkinlik-date position-absolute bottom-0 start-0 bg-primary text-white text-center p-2 m-3 rounded">
+                                <div class="day fw-bold fs-5">@etkinlik.Tarih.Day</div>
+                                <div class="month small text-uppercase">@etkinlik.Tarih.ToString("MMM")</div>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="badge bg-light text-primary">@etkinlik.Kategori?.KategoriAdi</span>
+                                <span class="badge bg-light text-dark"><i class="bi bi-geo-alt me-1"></i>@etkinlik.Sehir?.SehirAdi</span>
+                            </div>
+                            <h5 class="card-title">@etkinlik.EtkinlikAdi</h5>
+                            <p class="card-text text-muted small">
+                                @if (etkinlik.Aciklama != null && etkinlik.Aciklama.Length > 100)
+                                {
+                                    @(etkinlik.Aciklama.Substring(0, 100) + "...")
+                                }
+                                else
+                                {
+                                    @etkinlik.Aciklama
+                                }
+                            </p>
+                            <div class="mt-auto d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-primary">@etkinlik.BiletFiyati.ToString("C")</span>
+                                <a asp-controller="Etkinlik" asp-action="Detay" asp-route-id="@etkinlik.EtkinlikId" class="btn btn-outline-primary rounded-pill">Detaylar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12 text-center py-5">
+                <i class="bi bi-calendar-x" style="font-size: 4rem; color: #ccc;"></i>
+                <h3 class="mt-3">Henüz hiç etkinlik bulunmamaktadır.</h3>
+                <p class="text-muted">Çok yakında yeni etkinlikler eklenecektir.</p>
+            </div>
+        }
+    </div>
+    
+    <div class="text-center mt-4">
+        <a asp-controller="Etkinlik" asp-action="Listele" class="btn btn-primary btn-lg rounded-pill px-4">Tüm Etkinlikleri Gör</a>
+    </div>
+</div>
+
+<!-- Özellik Kartları -->
+<div class="features-section py-5 my-5 bg-light">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <h2 class="fw-bold display-5 mb-3 animate-on-scroll">Neden Biletini Ayır?</h2>
+            <div class="divider mx-auto animate-on-scroll delay-100"></div>
+            <p class="lead text-muted animate-on-scroll delay-200">Bilet almanın en kolay ve güvenli yolu</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card bg-white h-100 p-4 rounded-3 shadow-sm text-center animate-on-scroll">
+                    <div class="feature-icon rounded-circle bg-primary p-3 d-inline-flex mb-4">
+                        <i class="bi bi-ticket-perforated text-white" style="font-size: 2.5rem;"></i>
+                    </div>
+                    <h3 class="mb-3">Kolay Bilet Alımı</h3>
+                    <p class="text-muted">Birkaç tıklamayla istediğiniz etkinliğe biletinizi alın. Hızlı ve kolay ödeme seçenekleri sunuyoruz.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card bg-white h-100 p-4 rounded-3 shadow-sm text-center animate-on-scroll delay-200">
+                    <div class="feature-icon rounded-circle bg-primary p-3 d-inline-flex mb-4">
+                        <i class="bi bi-calendar-check text-white" style="font-size: 2.5rem;"></i>
+                    </div>
+                    <h3 class="mb-3">Binlerce Etkinlik</h3>
+                    <p class="text-muted">Konserler, tiyatrolar, festivaller ve daha fazlası. Her zevke uygun etkinlikler bulabileceğiniz geniş seçim.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card bg-white h-100 p-4 rounded-3 shadow-sm text-center animate-on-scroll delay-400">
+                    <div class="feature-icon rounded-circle bg-primary p-3 d-inline-flex mb-4">
+                        <i class="bi bi-shield-check text-white" style="font-size: 2.5rem;"></i>
+                    </div>
+                    <h3 class="mb-3">Güvenli Ödeme</h3>
+                    <p class="text-muted">%100 güvenli ödeme sistemi ile alışveriş yapın. Kişisel ve ödeme bilgileriniz tamamen korunur.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Call to Action -->
+<div class="cta-section py-5 text-center text-white" style="background: linear-gradient(rgba(13, 110, 253, 0.9), rgba(11, 94, 215, 0.9)), url('/img/defaults/default-cta-bg.svg') center/cover no-repeat fixed;">
+    <div class="container py-5">
+        <h2 class="display-4 fw-bold mb-4 animate-on-scroll">Biletini Şimdi Ayır!</h2>
+        <p class="lead mb-4 animate-on-scroll delay-100">Türkiye'nin en büyük etkinliklerine katılmak için hemen rezervasyonunuzu yapın.</p>
+        <div class="animate-on-scroll delay-200">
+            <a asp-controller="Account" asp-action="Register" class="btn btn-outline-light btn-lg rounded-pill px-5 py-2 me-3">Hemen Üye Ol</a>
+            <a asp-controller="Etkinlik" asp-action="Listele" class="btn btn-light btn-lg rounded-pill px-5 py-2 text-primary">Etkinlikleri Keşfet</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            try {
+                // Slider animasyonları
+                $('.carousel').on('slide.bs.carousel', function () {
+                    $(this).find('.slide-title').addClass('animate__animated animate__fadeInDown');
+                    $(this).find('.slide-text').addClass('animate__animated animate__fadeInUp');
+                });
+                
+                // Sayfa yüklendiğinde sepet sayacını güncelle
+                if (typeof updateCartCount === 'function') {
+                    updateCartCount();
+                } else {
+                    // updateCartCount tanımlı değilse alternatif kod
+                    var sepetCountElement = document.getElementById('sepet-count');
+                    if (sepetCountElement) {
+                        fetch('/Sepet/GetSepetCount')
+                            .then(response => response.json())
+                            .then(data => {
+                                sepetCountElement.textContent = data.toString();
+                            })
+                            .catch(error => console.error('Sepet sayısı güncellenemedi:', error));
+                    }
+                }
+            } catch (err) {
+                console.error('Index sayfası script hatası:', err);
+            }
+        });
+    </script>
+}

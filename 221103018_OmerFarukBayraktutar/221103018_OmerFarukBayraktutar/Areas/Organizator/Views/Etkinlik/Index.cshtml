@@ -1,0 +1,151 @@
+@model List<_221103018_OmerFarukBayraktutar.DAL.Models.Etkinlik>
+@{
+    ViewData["Title"] = "Etkinliklerim";
+    Layout = "_OrganizatorLayout";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <h2>Etkinliklerim</h2>
+            <p>Düzenlemek veya detayları görmek için etkinlik üzerine tıklayın.</p>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <a href="/Organizator/Etkinlik/Ekle" class="btn btn-primary">
+                <i class="fas fa-plus-circle"></i> Yeni Etkinlik Ekle
+            </a>
+        </div>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-light">
+                    <h5 class="card-title mb-0">Etkinlik Listesi</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="etkinlikTable" class="table table-hover datatable">
+                            <thead>
+                                <tr>
+                                    <th>Etkinlik Adı</th>
+                                    <th>Kategori</th>
+                                    <th>Şehir</th>
+                                    <th>Tarih</th>
+                                    <th>Bilet Fiyatı</th>
+                                    <th>Kapasite</th>
+                                    <th>Kalan</th>
+                                    <th>Durum</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null && Model.Any())
+                                {
+                                    foreach (var etkinlik in Model)
+                                    {
+                                        <tr>
+                                            <td>@etkinlik.EtkinlikAdi</td>
+                                            <td>@etkinlik.Kategori?.KategoriAdi</td>
+                                            <td>@etkinlik.Sehir?.SehirAdi</td>
+                                            <td>@etkinlik.Tarih.ToShortDateString()</td>
+                                            <td>@etkinlik.BiletFiyati.ToString("C")</td>
+                                            <td>@etkinlik.ToplamKapasite</td>
+                                            <td>@etkinlik.KalanKapasite</td>
+                                            <td>
+                                                @if (etkinlik.AktifMi)
+                                                {
+                                                    <span class="badge bg-success">Aktif</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge bg-danger">Pasif</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <a href="/Organizator/Etkinlik/Detay/@etkinlik.EtkinlikId" class="btn btn-sm btn-info">
+                                                        <i class="fas fa-eye"></i>
+                                                    </a>
+                                                    <a href="/Organizator/Etkinlik/Duzenle/@etkinlik.EtkinlikId" class="btn btn-sm btn-warning">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                    <button type="button" class="btn btn-sm btn-danger" 
+                                                       onclick="confirmDelete(@etkinlik.EtkinlikId)">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="9" class="text-center">Henüz etkinlik bulunmamaktadır.</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Silme Onayı Modal -->
+<div class="modal fade" id="silmeOnayi" tabindex="-1" aria-labelledby="silmeOnayiLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="silmeOnayiLabel">Etkinlik Silme Onayı</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Bu etkinliği silmek istediğinize emin misiniz? Bu işlem geri alınamaz.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                <form id="silForm" method="post" action="">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-danger">Sil</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function confirmDelete(id) {
+            document.getElementById('silForm').action = '/Organizator/Etkinlik/Sil/' + id;
+            var myModal = new bootstrap.Modal(document.getElementById('silmeOnayi'));
+            myModal.show();
+        }
+        
+        $(document).ready(function() {
+            // Etkinlik tablosunu başlat
+            $(document).trigger('reinitialize-datatables', ['#etkinlikTable']);
+        });
+    </script>
+} 

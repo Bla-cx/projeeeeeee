@@ -1,0 +1,38 @@
+@model _221103018_OmerFarukBayraktutar.DAL.Models.Sehir
+@{
+    ViewData["Title"] = "Şehir Düzenle";
+    Layout = "_AdminLayout";
+}
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Şehir Düzenle</h6>
+        </div>
+        <div class="card-body">
+            <form asp-action="Edit" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="SehirId" />
+                
+                <div class="mb-3">
+                    <label asp-for="SehirAdi" class="form-label">Şehir Adı</label>
+                    <input asp-for="SehirAdi" class="form-control" />
+                    <span asp-validation-for="SehirAdi" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Güncelle
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Listeye Dön
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

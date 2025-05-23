@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Admin Paneli</title>
+    <link rel="icon" href="~/img/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/admin.css" />
+    @await RenderSectionAsync("Head", required: false)
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>BiletiniAyır</h3>
+                <h6>Admin Paneli</h6>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="@(ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" ? "active" : "")">
+                    <a href="/Admin/Home"><i class="fas fa-tachometer-alt mr-2"></i> Dashboard</a>
+                </li>
+                <li class="@(ViewContext.RouteData.Values["Controller"]?.ToString() == "Etkinlik" ? "active" : "")">
+                    <a href="/Admin/Etkinlik"><i class="fas fa-calendar-alt mr-2"></i> Etkinlikler</a>
+                </li>
+                <li class="@(ViewContext.RouteData.Values["Controller"]?.ToString() == "Kategori" ? "active" : "")">
+                    <a href="/Admin/Kategori"><i class="fas fa-list mr-2"></i> Kategoriler</a>
+                </li>
+                <li class="@(ViewContext.RouteData.Values["Controller"]?.ToString() == "Sehir" ? "active" : "")">
+                    <a href="/Admin/Sehir"><i class="fas fa-city mr-2"></i> Şehirler</a>
+                </li>
+                <li class="@(ViewContext.RouteData.Values["Controller"]?.ToString() == "Rezervasyon" ? "active" : "")">
+                    <a href="/Admin/Rezervasyon"><i class="fas fa-ticket-alt mr-2"></i> Rezervasyonlar</a>
+                </li>
+                <li class="@(ViewContext.RouteData.Values["Controller"]?.ToString() == "User" ? "active" : "")">
+                    <a href="/Admin/User"><i class="fas fa-users mr-2"></i> Kullanıcılar</a>
+                </li>
+                <li>
+                    <a href="/"><i class="fas fa-home mr-2"></i> Siteye Dön</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" onclick="document.getElementById('logoutForm').submit();" class="logout-link"><i class="fas fa-sign-out-alt mr-2"></i> Çıkış</a>
+                    <form id="logoutForm" action="/Account/Logout" method="post" style="display:none;">
+                        @Html.AntiForgeryToken()
+                    </form>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Menü</span>
+                    </button>
+                    <div class="ml-auto">
+                        <span class="navbar-text">
+                            Hoş geldin, @User.Identity?.Name!
+                        </span>
+                    </div>
+                </div>
+            </nav>
+
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <!-- Core libraries first -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Add Validation Scripts -->
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
+    
+    <!-- Load datatable-helper first, before any other custom scripts -->
+    <script src="~/js/datatable-helper.js"></script>
+    
+    <!-- Form Helper -->
+    <script src="~/js/form-helper.js"></script>
+    
+    <!-- Then load admin.js -->
+    <script src="~/js/admin.js"></script>
+    
+    <!-- Basic sidebar functionality only -->
+    <script>
+        $(document).ready(function () {
+            // Basic sidebar toggle only - NO DataTable initialization here
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+            
+            // Common event handlers for admin actions
+            $('.durum-degistir-btn').on('click', function() {
+                const etkinlikId = $(this).data('etkinlik-id');
+                const durumForm = $('#durumForm');
+                durumForm.attr('action', '/Admin/Etkinlik/DurumDegistir/' + etkinlikId);
+                durumForm.submit();
+            });
+            
+            $('.silme-onayi-btn').on('click', function() {
+                const etkinlikId = $(this).data('etkinlik-id');
+                const silForm = $('#silForm');
+                silForm.attr('action', '/Admin/Etkinlik/Sil/' + etkinlikId);
+                
+                const silmeModal = new bootstrap.Modal(document.getElementById('silmeOnayi'));
+                silmeModal.show();
+            });
+        });
+    </script>
+    
+    <!-- View-specific scripts loaded last -->
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html> 

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .container {
+      width: 800px;
+      height: 500px;
+      position: relative;
+      overflow: hidden;
+      background: #4caf50;
+    }
+    
+    .field {
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      width: 700px;
+      height: 400px;
+      border: 5px solid white;
+      box-sizing: border-box;
+    }
+    
+    .center-circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 160px;
+      height: 160px;
+      border: 5px solid white;
+      border-radius: 50%;
+    }
+    
+    .center-dot {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 10px;
+      height: 10px;
+      background: white;
+      border-radius: 50%;
+    }
+    
+    .center-line {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 5px;
+      height: 400px;
+      background: white;
+    }
+    
+    .goal-area-left {
+      position: absolute;
+      top: 130px;
+      left: 50px;
+      width: 100px;
+      height: 240px;
+      border-right: 5px solid white;
+      box-sizing: border-box;
+    }
+    
+    .goal-area-right {
+      position: absolute;
+      top: 130px;
+      right: 50px;
+      width: 100px;
+      height: 240px;
+      border-left: 5px solid white;
+      box-sizing: border-box;
+    }
+    
+    .goal-left {
+      position: absolute;
+      top: 175px;
+      left: 30px;
+      width: 20px;
+      height: 150px;
+      border: 5px solid white;
+      box-sizing: border-box;
+    }
+    
+    .goal-right {
+      position: absolute;
+      top: 175px;
+      right: 30px;
+      width: 20px;
+      height: 150px;
+      border: 5px solid white;
+      box-sizing: border-box;
+    }
+    
+    .player {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      z-index: 2;
+    }
+    
+    .team1 { background: red; }
+    .team2 { background: blue; }
+    
+    .team1.player1 { top: 250px; left: 150px; }
+    .team1.player2 { top: 150px; left: 250px; }
+    .team1.player3 { top: 350px; left: 250px; }
+    .team1.player4 { top: 250px; left: 350px; }
+    
+    .team2.player1 { top: 250px; right: 150px; }
+    .team2.player2 { top: 150px; right: 250px; }
+    .team2.player3 { top: 350px; right: 250px; }
+    .team2.player4 { top: 250px; right: 350px; }
+    
+    .ball {
+      position: absolute;
+      top: 250px;
+      left: 400px;
+      width: 16px;
+      height: 16px;
+      background: white;
+      border-radius: 50%;
+      z-index: 3;
+      box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    }
+    
+    .stands {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 800px;
+      height: 50px;
+      background: #1b5e20;
+      display: flex;
+      justify-content: space-around;
+    }
+    
+    .stand {
+      width: 5px;
+      height: 10px;
+      background: #8bc34a;
+    }
+    
+    .text {
+      position: absolute;
+      top: 10px;
+      width: 100%;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      font-size: 24px;
+      color: white;
+      text-transform: uppercase;
+      font-weight: bold;
+      text-shadow: 0 0 5px rgba(0,0,0,0.7);
+      z-index: 4;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="text">SPORTS EVENT</div>
+    <div class="stands">
+      <div class="stand"></div>
+      <div class="stand"></div>
+      <div class="stand"></div>
+      <div class="stand"></div>
+      <div class="stand"></div>
+      <div class="stand"></div>
+      <div class="stand"></div>
+      <div class="stand"></div>
+      <div class="stand"></div>
+      <div class="stand"></div>
+      <div class="stand"></div>
+      <div class="stand"></div>
+    </div>
+    <div class="field">
+      <div class="center-line"></div>
+      <div class="center-circle"></div>
+      <div class="center-dot"></div>
+      <div class="goal-area-left"></div>
+      <div class="goal-area-right"></div>
+      <div class="goal-left"></div>
+      <div class="goal-right"></div>
+    </div>
+    
+    <div class="player team1 player1"></div>
+    <div class="player team1 player2"></div>
+    <div class="player team1 player3"></div>
+    <div class="player team1 player4"></div>
+    
+    <div class="player team2 player1"></div>
+    <div class="player team2 player2"></div>
+    <div class="player team2 player3"></div>
+    <div class="player team2 player4"></div>
+    
+    <div class="ball"></div>
+  </div>
+</body>
+</html> 
