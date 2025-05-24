@@ -73,55 +73,23 @@
                 @RenderBody()
             </main>
         </div>
-    </div>
-
-    <!-- Core libraries first -->
+    </div>    <!-- Core libraries first -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Add Validation Scripts -->
+    <!-- Validation Scripts -->
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-    
-    <!-- DataTables JS -->
+      <!-- DataTables JS -->
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
     
-    <!-- Load datatable-helper first, before any other custom scripts -->
-    <script src="~/js/datatable-helper.js"></script>
+    <!-- DataTable Turkish Language - Local file to avoid CORS -->
+    <script src="~/js/datatable-turkish.js"></script><!-- Helper Scripts -->
+    <!-- DISABLED: <script src="~/js/form-helper.js"></script> -->
     
-    <!-- Form Helper -->
-    <script src="~/js/form-helper.js"></script>
-    
-    <!-- Then load admin.js -->
-    <script src="~/js/admin.js"></script>
-    
-    <!-- Basic sidebar functionality only -->
-    <script>
-        $(document).ready(function () {
-            // Basic sidebar toggle only - NO DataTable initialization here
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-            });
-            
-            // Common event handlers for admin actions
-            $('.durum-degistir-btn').on('click', function() {
-                const etkinlikId = $(this).data('etkinlik-id');
-                const durumForm = $('#durumForm');
-                durumForm.attr('action', '/Admin/Etkinlik/DurumDegistir/' + etkinlikId);
-                durumForm.submit();
-            });
-            
-            $('.silme-onayi-btn').on('click', function() {
-                const etkinlikId = $(this).data('etkinlik-id');
-                const silForm = $('#silForm');
-                silForm.attr('action', '/Admin/Etkinlik/Sil/' + etkinlikId);
-                
-                const silmeModal = new bootstrap.Modal(document.getElementById('silmeOnayi'));
-                silmeModal.show();
-            });
-        });
-    </script>
+    <!-- MAIN ADMIN SCRIPT - Unified functionality -->
+    <script src="~/js/admin-master.js"></script>
     
     <!-- View-specific scripts loaded last -->
     @await RenderSectionAsync("Scripts", required: false)

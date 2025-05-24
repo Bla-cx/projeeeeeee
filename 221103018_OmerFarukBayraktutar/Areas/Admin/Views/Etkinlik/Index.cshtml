@@ -150,24 +150,45 @@
 
 @section Scripts {
     <script>
-        // DO NOT initialize tables here - datatable-helper.js will handle it automatically
-        console.log("Etkinlik/Index.cshtml loaded, skipping manual DataTable initialization");
-        
-        // Durum değiştirme butonları için event listener
-        $('.durum-degistir-btn').on('click', function() {
-            const etkinlikId = $(this).data('etkinlik-id');
-            $('#durumForm').attr('action', '/Admin/Etkinlik/DurumDegistir/' + etkinlikId);
-            $('#durumForm').submit();
-        });
-        
-        // Silme onayı butonları için event listener
-        $('.silme-onayi-btn').on('click', function() {
-            const etkinlikId = $(this).data('etkinlik-id');
-            $('#silForm').attr('action', '/Admin/Etkinlik/Sil/' + etkinlikId);
+        $(document).ready(function() {
+            console.log("Admin Etkinlik Index page loaded");
             
-            // Bootstrap modal açma
-            const silmeModal = new bootstrap.Modal(document.getElementById('silmeOnayi'));
-            silmeModal.show();
+            // SINGLE event handler for status change - NO automatic submission
+            $(document).off('click', '.durum-degistir-btn').on('click', '.durum-degistir-btn', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const etkinlikId = $(this).data('etkinlik-id');
+                console.log('Durum değiştir clicked for ID:', etkinlikId);
+                
+                // ONLY submit if user explicitly confirms
+                if (etkinlikId && confirm('Bu etkinliğin durumunu değiştirmek istediğinize emin misiniz?')) {
+                    $('#durumForm').attr('action', '/Admin/Etkinlik/DurumDegistir/' + etkinlikId);
+                    $('#durumForm')[0].submit();
+                }
+            });
+            
+            // SINGLE event handler for delete confirmation  
+            $(document).off('click', '.silme-onayi-btn').on('click', '.silme-onayi-btn', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const etkinlikId = $(this).data('etkinlik-id');
+                console.log('Silme onayı clicked for ID:', etkinlikId);
+                
+                if (etkinlikId) {
+                    $('#silForm').attr('action', '/Admin/Etkinlik/Sil/' + etkinlikId);
+                    
+                    // Bootstrap modal açma
+                    const modalElement = document.getElementById('silmeOnayi');
+                    if (modalElement) {
+                        const silmeModal = new bootstrap.Modal(modalElement);
+                        silmeModal.show();
+                    }
+                }
+            });
+            
+            console.log("Event handlers attached successfully - NO AUTO SUBMISSION");
         });
     </script>
-} 
+}

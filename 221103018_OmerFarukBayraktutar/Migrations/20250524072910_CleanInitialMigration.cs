@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace _221103018_OmerFarukBayraktutar.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigrationWithIntIds : Migration
+    public partial class CleanInitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -34,7 +34,7 @@ namespace _221103018_OmerFarukBayraktutar.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Ad = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: ""),
                     Soyad = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: ""),
-                    Telefon = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    Telefon = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     ProfilResimYolu = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
                     KayitTarihi = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -292,7 +292,9 @@ namespace _221103018_OmerFarukBayraktutar.Migrations
                     ToplamTutar = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
                     RezervasyonTarihi = table.Column<DateTime>(type: "datetime2", nullable: false),
                     OdemeDurumu = table.Column<bool>(type: "bit", nullable: false),
-                    BarkodNo = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true)
+                    BarkodNo = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Iptal = table.Column<bool>(type: "bit", nullable: false),
+                    Kullanildi = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -139,9 +139,7 @@ namespace _221103018_OmerFarukBayraktutar.Areas.Admin.Controllers
             await _context.SaveChangesAsync();
             TempData["SuccessMessage"] = "Kategori başarıyla silindi.";
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool KategoriExists(int id)
+        }        private bool KategoriExists(int id)
         {
             return _context.Kategoriler.Any(e => e.KategoriId == id);
         }

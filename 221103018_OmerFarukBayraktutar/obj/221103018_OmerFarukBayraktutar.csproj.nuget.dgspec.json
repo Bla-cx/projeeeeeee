@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ÖMER\\source\\repos\\221103018_OmerFarukBayraktutar\\221103018_OmerFarukBayraktutar\\221103018_OmerFarukBayraktutar.csproj": {}
+    "C:\\Users\\ÖMER\\source\\repos\\221103018_OmerFarukBayraktutar\\221103018_OmerFarukBayraktutar.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ÖMER\\source\\repos\\221103018_OmerFarukBayraktutar\\221103018_OmerFarukBayraktutar\\221103018_OmerFarukBayraktutar.csproj": {
+    "C:\\Users\\ÖMER\\source\\repos\\221103018_OmerFarukBayraktutar\\221103018_OmerFarukBayraktutar.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ÖMER\\source\\repos\\221103018_OmerFarukBayraktutar\\221103018_OmerFarukBayraktutar\\221103018_OmerFarukBayraktutar.csproj",
+        "projectUniqueName": "C:\\Users\\ÖMER\\source\\repos\\221103018_OmerFarukBayraktutar\\221103018_OmerFarukBayraktutar.csproj",
         "projectName": "221103018_OmerFarukBayraktutar",
-        "projectPath": "C:\\Users\\ÖMER\\source\\repos\\221103018_OmerFarukBayraktutar\\221103018_OmerFarukBayraktutar\\221103018_OmerFarukBayraktutar.csproj",
+        "projectPath": "C:\\Users\\ÖMER\\source\\repos\\221103018_OmerFarukBayraktutar\\221103018_OmerFarukBayraktutar.csproj",
         "packagesPath": "C:\\Users\\ÖMER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ÖMER\\source\\repos\\221103018_OmerFarukBayraktutar\\221103018_OmerFarukBayraktutar\\obj\\",
+        "outputPath": "C:\\Users\\ÖMER\\source\\repos\\221103018_OmerFarukBayraktutar\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -145,13 +145,58 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
-            // Rezervasyon tablosunu başlat
-            $(document).trigger('reinitialize-datatables', ['#rezervasyonTable']);
+            console.log("🔒 Etkinlik Detay sayfası yüklendi");
+              // Rezervasyon tablosunu başlat
+            setTimeout(function() {
+                const $table = $('#rezervasyonTable');
+                if ($table.length && !$.fn.DataTable.isDataTable('#rezervasyonTable')) {
+                    try {
+                        // Tablonun yapısını kontrol et
+                        if ($table.find('thead').length === 0) {
+                            console.warn("⚠️ Rezervasyon tablosunda thead bulunamadı");
+                            return;
+                        }
+                        
+                        $table.DataTable({
+                            "language": {
+                                "decimal": "",
+                                "emptyTable": "Tabloda veri bulunmamaktadır",
+                                "info": "_TOTAL_ kayıttan _START_ - _END_ arasındaki kayıtlar gösteriliyor",
+                                "infoEmpty": "Kayıt yok",
+                                "infoFiltered": "(_MAX_ kayıt içerisinden bulunan)",
+                                "infoPostFix": "",
+                                "thousands": ",",
+                                "lengthMenu": "_MENU_ kayıt göster",
+                                "loadingRecords": "Yükleniyor...",
+                                "processing": "İşleniyor...",
+                                "search": "Ara:",
+                                "zeroRecords": "Eşleşen kayıt bulunamadı",
+                                "paginate": {
+                                    "first": "İlk",
+                                    "last": "Son",
+                                    "next": "Sonraki",
+                                    "previous": "Önceki"
+                                }
+                            },
+                            "pageLength": 10,
+                            "autoWidth": false,
+                            "responsive": true
+                        });
+                        console.log("✅ Rezervasyon tablosu başlatıldı");
+                    } catch (error) {
+                        console.error("❌ Rezervasyon tablosu başlatma hatası:", error);
+                        // Tabloya temel sınıfları ekle
+                        $table.addClass('table table-striped table-hover');
+                    }
+                }
+            }, 300);
         });
 
         function durumDegistir(etkinlikId) {
-            document.getElementById('durumForm').action = '@Url.Action("DurumDegistir", "Etkinlik", new { area = "Admin" })/' + etkinlikId;
-            document.getElementById('durumForm').submit();
+            if (confirm('Etkinlik durumunu değiştirmek istediğinizden emin misiniz?')) {
+                document.getElementById('durumForm').action = '@Url.Action("DurumDegistir", "Etkinlik", new { area = "Admin" })/' + etkinlikId;
+                document.getElementById('durumForm').submit();
+            }
         }
     </script>
-} 
+}

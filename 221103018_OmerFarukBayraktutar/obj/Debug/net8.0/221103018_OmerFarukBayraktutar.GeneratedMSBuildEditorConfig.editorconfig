@@ -17,233 +17,233 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = _221103018_OmerFarukBayraktutar
 build_property.RootNamespace = _221103018_OmerFarukBayraktutar
-build_property.ProjectDir = C:\Users\ÖMER\source\repos\221103018_OmerFarukBayraktutar\221103018_OmerFarukBayraktutar\
+build_property.ProjectDir = C:\Users\ÖMER\source\repos\221103018_OmerFarukBayraktutar\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\ÖMER\source\repos\221103018_OmerFarukBayraktutar\221103018_OmerFarukBayraktutar
+build_property.MSBuildProjectDirectory = C:\Users\ÖMER\source\repos\221103018_OmerFarukBayraktutar
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Etkinlik/Detay.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Etkinlik/Detay.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRXRraW5saWtcRGV0YXkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Etkinlik/Duzenle.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Etkinlik/Duzenle.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRXRraW5saWtcRHV6ZW5sZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Etkinlik/Ekle.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Etkinlik/Ekle.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRXRraW5saWtcRWtsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Etkinlik/Index.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Etkinlik/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRXRraW5saWtcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Home/Index.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Kategori/Create.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Kategori/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS2F0ZWdvcmlcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Kategori/Delete.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Kategori/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS2F0ZWdvcmlcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Kategori/Edit.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Kategori/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS2F0ZWdvcmlcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Kategori/Index.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Kategori/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS2F0ZWdvcmlcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Rezervasyon/Delete.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Rezervasyon/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUmV6ZXJ2YXN5b25cRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Rezervasyon/Details.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Rezervasyon/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUmV6ZXJ2YXN5b25cRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Rezervasyon/Index.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Rezervasyon/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUmV6ZXJ2YXN5b25cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Sehir/Create.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Sehir/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2VoaXJcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Sehir/Delete.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Sehir/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2VoaXJcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Sehir/Edit.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Sehir/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2VoaXJcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Sehir/Index.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Sehir/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2VoaXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Shared/_AdminLayout.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Admin/Views/Shared/_AdminLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Admin/Views/User/Delete.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Admin/Views/User/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Admin/Views/User/Details.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Admin/Views/User/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Admin/Views/User/Edit.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Admin/Views/User/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Admin/Views/User/Index.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Admin/Views/User/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Organizator/Views/Etkinlik/Detay.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Organizator/Views/Etkinlik/Detay.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcT3JnYW5pemF0b3JcVmlld3NcRXRraW5saWtcRGV0YXkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Organizator/Views/Etkinlik/Duzenle.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Organizator/Views/Etkinlik/Duzenle.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcT3JnYW5pemF0b3JcVmlld3NcRXRraW5saWtcRHV6ZW5sZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Organizator/Views/Etkinlik/Ekle.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Organizator/Views/Etkinlik/Ekle.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcT3JnYW5pemF0b3JcVmlld3NcRXRraW5saWtcRWtsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Organizator/Views/Etkinlik/Index.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Organizator/Views/Etkinlik/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcT3JnYW5pemF0b3JcVmlld3NcRXRraW5saWtcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Organizator/Views/Home/Index.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Organizator/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcT3JnYW5pemF0b3JcVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Organizator/Views/Rezervasyon/BiletKontrol.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Organizator/Views/Rezervasyon/BiletKontrol.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcT3JnYW5pemF0b3JcVmlld3NcUmV6ZXJ2YXN5b25cQmlsZXRLb250cm9sLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Organizator/Views/Rezervasyon/BiletKontrolSonuc.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Organizator/Views/Rezervasyon/BiletKontrolSonuc.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcT3JnYW5pemF0b3JcVmlld3NcUmV6ZXJ2YXN5b25cQmlsZXRLb250cm9sU29udWMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Organizator/Views/Rezervasyon/Detay.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Organizator/Views/Rezervasyon/Detay.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcT3JnYW5pemF0b3JcVmlld3NcUmV6ZXJ2YXN5b25cRGV0YXkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Organizator/Views/Rezervasyon/Index.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Organizator/Views/Rezervasyon/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcT3JnYW5pemF0b3JcVmlld3NcUmV6ZXJ2YXN5b25cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Areas/Organizator/Views/Shared/_OrganizatorLayout.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Areas/Organizator/Views/Shared/_OrganizatorLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcT3JnYW5pemF0b3JcVmlld3NcU2hhcmVkXF9Pcmdhbml6YXRvckxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Views/Account/ForgotPassword.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Views/Account/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Views/Account/Login.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Views/Account/Profile.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Views/Account/Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxQcm9maWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Views/Account/Register.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Views/Account/ResetPassword.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Views/Account/ResetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Views/Etkinlik/Detay.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Views/Etkinlik/Detay.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXRraW5saWtcRGV0YXkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Views/Etkinlik/Listele.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Views/Etkinlik/Listele.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXRraW5saWtcTGlzdGVsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Views/Home/DbError.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Views/Home/DbError.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEYkVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Views/Home/Index.Backup.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Views/Home/Index.Backup.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5CYWNrdXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Views/Home/Index.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Views/Home/Privacy.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Views/Rezervasyon/BiletKontrol.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Views/Rezervasyon/BiletKontrol.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV6ZXJ2YXN5b25cQmlsZXRLb250cm9sLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Views/Rezervasyon/Detay.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Views/Rezervasyon/Detay.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV6ZXJ2YXN5b25cRGV0YXkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Views/Rezervasyon/Rezervasyonlarim.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Views/Rezervasyon/Rezervasyonlarim.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV6ZXJ2YXN5b25cUmV6ZXJ2YXN5b25sYXJpbS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Views/Sepet/Checkout.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Views/Sepet/Checkout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VwZXRcQ2hlY2tvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Views/Sepet/Index.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Views/Sepet/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VwZXRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Views/Sepet/OdemeBasarili.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Views/Sepet/OdemeBasarili.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VwZXRcT2RlbWVCYXNhcmlsaS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Views/Shared/Error.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Views/Shared/_AdminLayout.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Views/Shared/_AdminLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Views/Shared/_OrganizatorLayout.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Views/Shared/_OrganizatorLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Pcmdhbml6YXRvckxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Views/_ViewImports.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Views/_ViewStart.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/221103018_OmerFarukBayraktutar/Views/Shared/_Layout.cshtml]
+[C:/Users/ÖMER/source/repos/221103018_OmerFarukBayraktutar/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-vdrymzeg9e

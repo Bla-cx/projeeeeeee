@@ -75,8 +75,7 @@ namespace _221103018_OmerFarukBayraktutar.Areas.Admin.Controllers
             return View(viewModel);
         }
 
-        // POST: Admin/Etkinlik/Ekle
-        [HttpPost]
+        // POST: Admin/Etkinlik/Ekle        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Ekle(EtkinlikEkleViewModel model)
         {
@@ -90,10 +89,29 @@ namespace _221103018_OmerFarukBayraktutar.Areas.Admin.Controllers
 
             string resimYolu = "/img/defaults/default-event.svg"; // Varsayılan resim
 
-            if (model.Resim != null && model.Resim.Length > 5 * 1024 * 1024) // 5MB
+            if (model.Resim != null)
             {
-                ModelState.AddModelError("Resim", "Dosya boyutu 5MB'ı geçemez.");
-                return View(model);
+                if (model.Resim.Length > 5 * 1024 * 1024) // 5MB
+                {
+                    ModelState.AddModelError("Resim", "Dosya boyutu 5MB'ı geçemez.");
+                    model.Kategoriler = await GetKategorilerSelectList();
+                    model.Sehirler = await GetSehirlerSelectList();
+                    model.OrganizatorList = await GetOrganizatorSelectList();
+                    return View(model);
+                }
+
+                try
+                {
+                    resimYolu = await _fileService.SaveImageAsync(model.Resim, "etkinlikler");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("Resim", "Resim yüklenirken bir hata oluştu: " + ex.Message);
+                    model.Kategoriler = await GetKategorilerSelectList();
+                    model.Sehirler = await GetSehirlerSelectList();
+                    model.OrganizatorList = await GetOrganizatorSelectList();
+                    return View(model);
+                }
             }
 
             var etkinlik = new Etkinlik
@@ -130,20 +148,18 @@ namespace _221103018_OmerFarukBayraktutar.Areas.Admin.Controllers
             if (etkinlik == null)
             {
                 return NotFound();
-            }
-
-            var viewModel = new EtkinlikDuzenleViewModel
+            }            var viewModel = new EtkinlikDuzenleViewModel
             {
                 EtkinlikId = etkinlik.EtkinlikId,
                 EtkinlikAdi = etkinlik.EtkinlikAdi,
-                Aciklama = etkinlik.Aciklama,
+                Aciklama = etkinlik.Aciklama ?? string.Empty,
                 Tarih = etkinlik.Tarih,
                 BaslangicSaati = etkinlik.BaslangicSaati,
                 BitisSaati = etkinlik.BitisSaati,
                 KategoriId = etkinlik.KategoriId,
                 SehirId = etkinlik.SehirId,
                 Adres = etkinlik.Adres,
-                MevcutResimYolu = etkinlik.ResimYolu,
+                MevcutResimYolu = etkinlik.ResimYolu ?? "/img/defaults/default-event.svg",
                 BiletFiyati = etkinlik.BiletFiyati,
                 Kapasite = etkinlik.ToplamKapasite,
                 AktifMi = etkinlik.AktifMi,
@@ -176,7 +192,7 @@ namespace _221103018_OmerFarukBayraktutar.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            string resimYolu = etkinlik.ResimYolu;
+            string resimYolu = etkinlik.ResimYolu ?? "/img/defaults/default-event.svg";
 
             if (model.Resim != null)
             {
@@ -306,10 +322,8 @@ namespace _221103018_OmerFarukBayraktutar.Areas.Admin.Controllers
                 var roles = await _context.Roles
                     .Where(r => roleIds.Contains(r.Id))
                     .Select(r => r.Name)
-                    .ToListAsync();
-
-                // Add user to list if they have Organizer role
-                if (roles.Contains("Organizer"))
+                    .ToListAsync();                // Add user to list if they have Organizator role
+                if (roles.Contains("Organizator"))
                 {
                     organizatorList.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
                     {
@@ -321,11 +335,9 @@ namespace _221103018_OmerFarukBayraktutar.Areas.Admin.Controllers
             
             return organizatorList;
         }
-    }
-
-    public class AdminEtkinlikDetayViewModel
+    }    public class AdminEtkinlikDetayViewModel
     {
-        public Etkinlik Etkinlik { get; set; }
-        public List<Rezervasyon> Rezervasyonlar { get; set; }
+        public Etkinlik Etkinlik { get; set; } = null!;
+        public List<Rezervasyon> Rezervasyonlar { get; set; } = new List<Rezervasyon>();
     }
 } 

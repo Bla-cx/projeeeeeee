@@ -33,11 +33,9 @@ namespace _221103018_OmerFarukBayraktutar.Data
 
             // Etkinlikler
             await SeedEtkinlikler(context, userManager);
-        }
-
-        private static async Task SeedRoles(RoleManager<IdentityRole<int>> roleManager)
+        }        private static async Task SeedRoles(RoleManager<IdentityRole<int>> roleManager)
         {
-            string[] roleNames = { "Admin", "Organizer", "Customer" };
+            string[] roleNames = { "Admin", "Organizator", "Customer" };
 
             foreach (var roleName in roleNames)
             {
@@ -80,14 +78,12 @@ namespace _221103018_OmerFarukBayraktutar.Data
                 Soyad = "User",
                 EmailConfirmed = true,
                 KayitTarihi = DateTime.Now
-            };
-
-            if (await userManager.FindByEmailAsync(organizerUser.Email) == null)
+            };            if (await userManager.FindByEmailAsync(organizerUser.Email) == null)
             {
                 var result = await userManager.CreateAsync(organizerUser, "Organizer123!");
                 if (result.Succeeded)
                 {
-                    await userManager.AddToRoleAsync(organizerUser, "Organizer");
+                    await userManager.AddToRoleAsync(organizerUser, "Organizator");
                 }
             }
 
@@ -186,7 +182,7 @@ namespace _221103018_OmerFarukBayraktutar.Data
                     KategoriId = kategoriler.First(k => k.KategoriAdi == "Konser").KategoriId,
                     SehirId = sehirler.First(s => s.SehirAdi == "İstanbul").SehirId,
                     Adres = "Harbiye Açık Hava Tiyatrosu, İstanbul",
-                    ResimYolu = "/img/concert1.jpg",
+                    ResimYolu = "/img/placeholder/slider-concert.svg",
                     OrganizatorId = organizatorId,
                     BiletFiyati = 150,
                     ToplamKapasite = 1000,

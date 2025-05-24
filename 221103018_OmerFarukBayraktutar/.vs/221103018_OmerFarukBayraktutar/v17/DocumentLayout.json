@@ -1,0 +1,207 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\\u00D6MER\\source\\repos\\221103018_OmerFarukBayraktutar\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{ACD126BD-A669-F9A5-DAD0-3757BAA80BAC}|221103018_OmerFarukBayraktutar.csproj|c:\\users\\\u00F6mer\\source\\repos\\221103018_omerfarukbayraktutar\\dal\\etkinliklerdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACD126BD-A669-F9A5-DAD0-3757BAA80BAC}|221103018_OmerFarukBayraktutar.csproj|solutionrelative:dal\\etkinliklerdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACD126BD-A669-F9A5-DAD0-3757BAA80BAC}|221103018_OmerFarukBayraktutar.csproj|c:\\users\\\u00F6mer\\source\\repos\\221103018_omerfarukbayraktutar\\areas\\admin\\views\\etkinlik\\ekle.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ACD126BD-A669-F9A5-DAD0-3757BAA80BAC}|221103018_OmerFarukBayraktutar.csproj|solutionrelative:areas\\admin\\views\\etkinlik\\ekle.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACD126BD-A669-F9A5-DAD0-3757BAA80BAC}|221103018_OmerFarukBayraktutar.csproj|c:\\users\\\u00F6mer\\source\\repos\\221103018_omerfarukbayraktutar\\areas\\admin\\controllers\\etkinlikcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACD126BD-A669-F9A5-DAD0-3757BAA80BAC}|221103018_OmerFarukBayraktutar.csproj|solutionrelative:areas\\admin\\controllers\\etkinlikcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACD126BD-A669-F9A5-DAD0-3757BAA80BAC}|221103018_OmerFarukBayraktutar.csproj|c:\\users\\\u00F6mer\\source\\repos\\221103018_omerfarukbayraktutar\\viewmodels\\etkinlikdetayviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACD126BD-A669-F9A5-DAD0-3757BAA80BAC}|221103018_OmerFarukBayraktutar.csproj|solutionrelative:viewmodels\\etkinlikdetayviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACD126BD-A669-F9A5-DAD0-3757BAA80BAC}|221103018_OmerFarukBayraktutar.csproj|c:\\users\\\u00F6mer\\source\\repos\\221103018_omerfarukbayraktutar\\areas\\admin\\views\\etkinlik\\detay.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ACD126BD-A669-F9A5-DAD0-3757BAA80BAC}|221103018_OmerFarukBayraktutar.csproj|solutionrelative:areas\\admin\\views\\etkinlik\\detay.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACD126BD-A669-F9A5-DAD0-3757BAA80BAC}|221103018_OmerFarukBayraktutar.csproj|c:\\users\\\u00F6mer\\source\\repos\\221103018_omerfarukbayraktutar\\areas\\admin\\views\\etkinlik\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ACD126BD-A669-F9A5-DAD0-3757BAA80BAC}|221103018_OmerFarukBayraktutar.csproj|solutionrelative:areas\\admin\\views\\etkinlik\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACD126BD-A669-F9A5-DAD0-3757BAA80BAC}|221103018_OmerFarukBayraktutar.csproj|c:\\users\\\u00F6mer\\source\\repos\\221103018_omerfarukbayraktutar\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ACD126BD-A669-F9A5-DAD0-3757BAA80BAC}|221103018_OmerFarukBayraktutar.csproj|solutionrelative:views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACD126BD-A669-F9A5-DAD0-3757BAA80BAC}|221103018_OmerFarukBayraktutar.csproj|c:\\users\\\u00F6mer\\source\\repos\\221103018_omerfarukbayraktutar\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{ACD126BD-A669-F9A5-DAD0-3757BAA80BAC}|221103018_OmerFarukBayraktutar.csproj|solutionrelative:wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACD126BD-A669-F9A5-DAD0-3757BAA80BAC}|221103018_OmerFarukBayraktutar.csproj|c:\\users\\\u00F6mer\\source\\repos\\221103018_omerfarukbayraktutar\\wwwroot\\js\\global-events.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{ACD126BD-A669-F9A5-DAD0-3757BAA80BAC}|221103018_OmerFarukBayraktutar.csproj|solutionrelative:wwwroot\\js\\global-events.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACD126BD-A669-F9A5-DAD0-3757BAA80BAC}|221103018_OmerFarukBayraktutar.csproj|c:\\users\\\u00F6mer\\source\\repos\\221103018_omerfarukbayraktutar\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACD126BD-A669-F9A5-DAD0-3757BAA80BAC}|221103018_OmerFarukBayraktutar.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACD126BD-A669-F9A5-DAD0-3757BAA80BAC}|221103018_OmerFarukBayraktutar.csproj|c:\\users\\\u00F6mer\\source\\repos\\221103018_omerfarukbayraktutar\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{ACD126BD-A669-F9A5-DAD0-3757BAA80BAC}|221103018_OmerFarukBayraktutar.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EtkinliklerDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\\u00D6MER\\source\\repos\\221103018_OmerFarukBayraktutar\\DAL\\EtkinliklerDbContext.cs",
+              "RelativeDocumentMoniker": "DAL\\EtkinliklerDbContext.cs",
+              "ToolTip": "C:\\Users\\\u00D6MER\\source\\repos\\221103018_OmerFarukBayraktutar\\DAL\\EtkinliklerDbContext.cs",
+              "RelativeToolTip": "DAL\\EtkinliklerDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T11:18:06.029Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Detay.cshtml",
+              "DocumentMoniker": "C:\\Users\\\u00D6MER\\source\\repos\\221103018_OmerFarukBayraktutar\\Areas\\Admin\\Views\\Etkinlik\\Detay.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\Etkinlik\\Detay.cshtml",
+              "ToolTip": "C:\\Users\\\u00D6MER\\source\\repos\\221103018_OmerFarukBayraktutar\\Areas\\Admin\\Views\\Etkinlik\\Detay.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\Etkinlik\\Detay.cshtml",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAgwI8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-24T09:32:44.95Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EtkinlikDetayViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\\u00D6MER\\source\\repos\\221103018_OmerFarukBayraktutar\\ViewModels\\EtkinlikDetayViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\EtkinlikDetayViewModel.cs",
+              "ToolTip": "C:\\Users\\\u00D6MER\\source\\repos\\221103018_OmerFarukBayraktutar\\ViewModels\\EtkinlikDetayViewModel.cs",
+              "RelativeToolTip": "ViewModels\\EtkinlikDetayViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T09:32:09.236Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Ekle.cshtml",
+              "DocumentMoniker": "C:\\Users\\\u00D6MER\\source\\repos\\221103018_OmerFarukBayraktutar\\Areas\\Admin\\Views\\Etkinlik\\Ekle.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\Etkinlik\\Ekle.cshtml",
+              "ToolTip": "C:\\Users\\\u00D6MER\\source\\repos\\221103018_OmerFarukBayraktutar\\Areas\\Admin\\Views\\Etkinlik\\Ekle.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\Etkinlik\\Ekle.cshtml",
+              "ViewState": "AgIAAKMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-24T09:30:46.413Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\\u00D6MER\\source\\repos\\221103018_OmerFarukBayraktutar\\Areas\\Admin\\Views\\Etkinlik\\Index.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\Etkinlik\\Index.cshtml",
+              "ToolTip": "C:\\Users\\\u00D6MER\\source\\repos\\221103018_OmerFarukBayraktutar\\Areas\\Admin\\Views\\Etkinlik\\Index.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\Etkinlik\\Index.cshtml",
+              "ViewState": "AgIAAKsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-24T09:30:12.902Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EtkinlikController.cs",
+              "DocumentMoniker": "C:\\Users\\\u00D6MER\\source\\repos\\221103018_OmerFarukBayraktutar\\Areas\\Admin\\Controllers\\EtkinlikController.cs",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Controllers\\EtkinlikController.cs",
+              "ToolTip": "C:\\Users\\\u00D6MER\\source\\repos\\221103018_OmerFarukBayraktutar\\Areas\\Admin\\Controllers\\EtkinlikController.cs",
+              "RelativeToolTip": "Areas\\Admin\\Controllers\\EtkinlikController.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAIAwwEEAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T09:29:08.119Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "_AdminLayout.cshtml",
+              "DocumentMoniker": "C:\\Users\\\u00D6MER\\source\\repos\\221103018_OmerFarukBayraktutar\\Views\\Shared\\_AdminLayout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_AdminLayout.cshtml",
+              "ToolTip": "C:\\Users\\\u00D6MER\\source\\repos\\221103018_OmerFarukBayraktutar\\Views\\Shared\\_AdminLayout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_AdminLayout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-24T09:28:54.998Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "site.js",
+              "DocumentMoniker": "C:\\Users\\\u00D6MER\\source\\repos\\221103018_OmerFarukBayraktutar\\wwwroot\\js\\site.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\site.js",
+              "ToolTip": "C:\\Users\\\u00D6MER\\source\\repos\\221103018_OmerFarukBayraktutar\\wwwroot\\js\\site.js",
+              "RelativeToolTip": "wwwroot\\js\\site.js",
+              "ViewState": "AgIAAPIAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-05-24T09:27:27.31Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "global-events.js",
+              "DocumentMoniker": "C:\\Users\\\u00D6MER\\source\\repos\\221103018_OmerFarukBayraktutar\\wwwroot\\js\\global-events.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\global-events.js",
+              "ToolTip": "C:\\Users\\\u00D6MER\\source\\repos\\221103018_OmerFarukBayraktutar\\wwwroot\\js\\global-events.js",
+              "RelativeToolTip": "wwwroot\\js\\global-events.js",
+              "ViewState": "AgIAAJMAAAAAAAAAAAAAAAgAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-05-24T09:26:46.422Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\\u00D6MER\\source\\repos\\221103018_OmerFarukBayraktutar\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\\u00D6MER\\source\\repos\\221103018_OmerFarukBayraktutar\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAEIBAAAAAAAAAADgv00BAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T06:30:33.661Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\\u00D6MER\\source\\repos\\221103018_OmerFarukBayraktutar\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\\u00D6MER\\source\\repos\\221103018_OmerFarukBayraktutar\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-24T06:30:30.471Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

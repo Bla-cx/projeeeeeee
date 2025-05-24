@@ -10,9 +10,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace _221103018_OmerFarukBayraktutar.Areas.Organizator.Controllers
-{
-    [Area("Organizator")]
-    [Authorize(Roles = "Organizer")]
+{    [Area("Organizator")]
+    [Authorize(Roles = "Organizator")]
     public class RezervasyonController : Controller
     {
         private readonly EtkinliklerDbContext _context;

@@ -12,15 +12,15 @@ using _221103018_OmerFarukBayraktutar.DAL;
 namespace _221103018_OmerFarukBayraktutar.Migrations
 {
     [DbContext(typeof(EtkinliklerDbContext))]
-    [Migration("20250521014532_InitialMigrationWithIntIds")]
-    partial class InitialMigrationWithIntIds
+    [Migration("20250524072910_CleanInitialMigration")]
+    partial class CleanInitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.5")
+                .HasAnnotation("ProductVersion", "8.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -234,6 +234,7 @@ namespace _221103018_OmerFarukBayraktutar.Migrations
                         .HasDefaultValue("");
 
                     b.Property<string>("Telefon")
+                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
@@ -432,8 +433,14 @@ namespace _221103018_OmerFarukBayraktutar.Migrations
                     b.Property<int>("EtkinlikId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("Iptal")
+                        .HasColumnType("bit");
+
                     b.Property<int>("KullaniciId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("Kullanildi")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("OdemeDurumu")
                         .HasColumnType("bit");

@@ -1,0 +1,64 @@
+2025-05-24 10:34:01.214 +03:00 [INF] Veritabanı başarıyla başlatıldı ve veriler seed edildi.
+2025-05-24 10:34:01.510 +03:00 [ERR] Hosting failed to start
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5071: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Normal olarak her yuva adresi (iletişim kuralı/ağ adresi/bağlantı noktası) için yalnızca bir kullanıma izin veriliyor.
+ ---> System.Net.Sockets.SocketException (10048): Normal olarak her yuva adresi (iletişim kuralı/ağ adresi/bağlantı noktası) için yalnızca bir kullanıma izin veriliyor.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-05-24 10:37:24.747 +03:00 [INF] Veritabanı başarıyla başlatıldı ve veriler seed edildi.
+2025-05-24 10:37:26.110 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-24 10:49:46.903 +03:00 [INF] Veritabanı başarıyla başlatıldı ve veriler seed edildi.
+2025-05-24 10:50:48.071 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-24 11:04:49.590 +03:00 [INF] Veritabanı başarıyla başlatıldı ve veriler seed edildi.
+2025-05-24 11:04:51.432 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-24 11:15:07.101 +03:00 [INF] Veritabanı başarıyla başlatıldı ve veriler seed edildi.
+2025-05-24 11:15:08.524 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-24 11:25:12.872 +03:00 [INF] Veritabanı başarıyla başlatıldı ve veriler seed edildi.
+2025-05-24 11:25:14.135 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-24 11:51:23.597 +03:00 [INF] Veritabanı başarıyla başlatıldı ve veriler seed edildi.
+2025-05-24 11:51:25.207 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-24 11:52:23.037 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.AspNetCore.Routing.Matching.AmbiguousMatchException: The request matched multiple endpoints. Matches: 
+
+_221103018_OmerFarukBayraktutar.Areas.Admin.Controllers.EtkinlikController.Ekle (221103018_OmerFarukBayraktutar)
+_221103018_OmerFarukBayraktutar.Areas.Admin.Controllers.EtkinlikController.Ekle (221103018_OmerFarukBayraktutar)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ReportAmbiguity(Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ProcessFinalCandidates(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.Select(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DfaMatcher.MatchAsync(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(HttpContext httpContext)
+   at _221103018_OmerFarukBayraktutar.Program.<>c.<<Main>b__0_5>d.MoveNext() in C:\Users\ÖMER\source\repos\221103018_OmerFarukBayraktutar\Program.cs:line 239
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2025-05-24 11:55:15.850 +03:00 [INF] Veritabanı başarıyla başlatıldı ve veriler seed edildi.
+2025-05-24 11:55:17.744 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-24 12:00:48.828 +03:00 [INF] Veritabanı başarıyla başlatıldı ve veriler seed edildi.
+2025-05-24 12:00:50.057 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-24 12:07:46.628 +03:00 [INF] Veritabanı başarıyla başlatıldı ve veriler seed edildi.
+2025-05-24 12:07:48.372 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-24 12:14:04.376 +03:00 [INF] Veritabanı başarıyla başlatıldı ve veriler seed edildi.
+2025-05-24 12:14:05.777 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-24 12:14:53.615 +03:00 [INF] Veritabanı başarıyla başlatıldı ve veriler seed edildi.
+2025-05-24 12:14:55.805 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-24 12:17:57.747 +03:00 [INF] Veritabanı başarıyla başlatıldı ve veriler seed edildi.
+2025-05-24 12:18:23.714 +03:00 [WRN] Failed to determine the https port for redirect.

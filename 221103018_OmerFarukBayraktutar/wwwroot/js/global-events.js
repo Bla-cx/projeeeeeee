@@ -1,6 +1,13 @@
 // Site geneli için global click event çözümü
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("Global events handler loaded - FIXED VERSION!");
+    console.log("Global events handler loaded - ADMIN SAFE VERSION!");
+    
+    // Admin panelde hiçbir müdahale yapma
+    if (window.location.pathname.includes('/Admin/') || 
+        window.location.pathname.includes('/Organizator/')) {
+        console.log("🔒 Admin/Organizator panelde global events devre dışı");
+        return;
+    }
     
     // Tüm form gönderimlerini izle ama engelleme!
     document.querySelectorAll('form').forEach(function(form) {
@@ -34,10 +41,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         });
-    });
-
-    // Tüm linkleri izle
+    });    // Tüm linkleri izle - SAFE MODE
     document.querySelectorAll('a').forEach(function(link) {
+        // Admin panel linklerini ve navigation linklerini koruyalım
+        if (link.href && 
+            (link.href.includes('/Admin/') || 
+             link.href.includes('/Organizator/') ||
+             link.classList.contains('btn') ||
+             link.closest('.btn'))) {
+            console.log('Admin/Organizator link korundu:', link.href);
+            return; // Bu linklere müdahale etme
+        }
+        
         link.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
             console.log('Link tıklandı: ', href);

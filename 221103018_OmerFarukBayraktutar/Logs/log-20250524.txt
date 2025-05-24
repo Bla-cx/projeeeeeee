@@ -1,0 +1,5 @@
+2025-05-24 09:23:40.042 +03:00 [INF] Veritabanı başarıyla başlatıldı ve veriler seed edildi.
+2025-05-24 09:23:45.601 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-05-24 10:29:50.585 +03:00 [INF] Veritabanı başarıyla başlatıldı ve veriler seed edildi.
+2025-05-24 10:32:46.962 +03:00 [INF] Veritabanı başarıyla başlatıldı ve veriler seed edildi.
+2025-05-24 10:33:53.197 +03:00 [WRN] Failed to determine the https port for redirect.

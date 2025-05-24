@@ -4,13 +4,12 @@
     Layout = "_OrganizatorLayout";
 }
 
-<div class="container-fluid">
-    <div class="row mb-3">
+<div class="container-fluid">    <div class="row mb-3">
         <div class="col-md-12">
-            <a href="/Organizator/Etkinlik" class="btn btn-secondary">
+            <a asp-action="Index" asp-controller="Etkinlik" asp-area="Organizator" class="btn btn-secondary">
                 <i class="fas fa-arrow-left"></i> Listeye Dön
             </a>
-            <a href="/Organizator/Etkinlik/Duzenle/@Model.Etkinlik.EtkinlikId" class="btn btn-warning">
+            <a asp-action="Duzenle" asp-controller="Etkinlik" asp-area="Organizator" asp-route-id="@Model.Etkinlik.EtkinlikId" class="btn btn-warning">
                 <i class="fas fa-edit"></i> Düzenle
             </a>
         </div>

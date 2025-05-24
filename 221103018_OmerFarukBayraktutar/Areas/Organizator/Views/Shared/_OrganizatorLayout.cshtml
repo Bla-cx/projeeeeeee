@@ -130,33 +130,28 @@
         <div class="container">
             &copy; 2023 - BİLETİNİ AYIR - Organizatör Paneli
         </div>
-    </footer>
-
-    <!-- Sadece gerekli kütüphaneleri yüklüyoruz -->
+    </footer>    <!-- Sadece gerekli kütüphaneleri yüklüyoruz -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     
     <!-- Validation Scripts -->
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-    
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>      <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
-    <script src="~/js/datatable-helper.js"></script>
-    <script src="~/js/form-helper.js"></script>
+    
+    <!-- DataTable Turkish Language - Local file to avoid CORS -->
+    <script src="~/js/datatable-turkish.js"></script>
+    
+    <script src="~/js/datatable-helper-improved.js"></script>
+    <!-- form-helper.js removed to prevent navigation conflicts -->
 
     <!-- Layout seviyesinde minimum JavaScript kodu -->
     <script>
         $(document).ready(function() {
-            // Tüm sayfalar için bootstrap dropdown menü aktif etme
-            $('.dropdown-toggle').dropdown();
+            console.log("Organizator layout initialized");
             
-            // DataTables için Türkçe dil desteği hazır olsun
-            $.extend(true, $.fn.dataTable.defaults, {
-                language: {
-                    url: "//cdn.datatables.net/plug-ins/1.10.25/i18n/Turkish.json"
-                }
-            });
+            // Bootstrap dropdown menü aktif etme
+            $('.dropdown-toggle').dropdown();
         });
     </script>
 

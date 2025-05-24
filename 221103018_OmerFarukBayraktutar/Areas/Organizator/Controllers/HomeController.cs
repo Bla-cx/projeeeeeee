@@ -9,9 +9,8 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace _221103018_OmerFarukBayraktutar.Areas.Organizator.Controllers
-{
-    [Area("Organizator")]
-    [Authorize(Roles = "Organizer")]
+{    [Area("Organizator")]
+    [Authorize(Roles = "Organizator")]
     public class HomeController : Controller
     {
         private readonly EtkinliklerDbContext _context;
@@ -59,15 +58,13 @@ namespace _221103018_OmerFarukBayraktutar.Areas.Organizator.Controllers
 
             return View(viewModel);
         }
-    }
-
-    public class OrganizatorDashboardViewModel
+    }    public class OrganizatorDashboardViewModel
     {
         public int ToplamEtkinlikSayisi { get; set; }
         public int AktifEtkinlikSayisi { get; set; }
         public int ToplamRezervasyonSayisi { get; set; }
         public int BugunkuRezervasyonSayisi { get; set; }
-        public List<Etkinlik> SonEtkinlikler { get; set; }
-        public List<Rezervasyon> SonRezervasyonlar { get; set; }
+        public List<Etkinlik> SonEtkinlikler { get; set; } = new List<Etkinlik>();
+        public List<Rezervasyon> SonRezervasyonlar { get; set; } = new List<Rezervasyon>();
     }
 }
